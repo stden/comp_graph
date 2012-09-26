@@ -1,0 +1,28 @@
+\documentclass[12pt]{article}
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[english,russian]{babel}
+\usepackage{tikz}
+
+\begin{document}
+
+This picture was drawn with TikZ:
+
+Окружность:
+
+\begin{tikzpicture}[scale=1.5]
+% Draw thin grid lines with color 40% gray + 60% white
+\draw [step=0.5,thin,gray!40] (-1.4,-1.4) grid (1.4,1.4);
+
+% Draw x and y axis lines
+\draw [->] (-1.5,0) -- (1.5,0) node [below] {$x$};
+\draw [->] (0,-1.5) -- (0,1.5) node [left] {$y$};
+
+% Draw a blue circle at the origin of radius 1
+\draw [semithick,blue] (0,0) circle (1);
+
+% Draw a triangle with vertices (0,0), (1,0), (1,0.7)
+\draw [semithick,blue] (0,0) -- (1,0) -- (1,0.7) -- cycle;
+\end{tikzpicture}
+
+\end{document}

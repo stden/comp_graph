@@ -10,3 +10,12 @@
 *.lai
 *.la
 *.a
+
+# Backups
+*.orig
+*.bak
+
+*.tmp
+~*.*
+*.local
+*.~dsk
