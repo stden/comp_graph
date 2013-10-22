@@ -1,0 +1,137 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <title>Примеры решений задач</title>
+    <!-- Синтаксис -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/sh_nedit.css">
+    <script type="text/javascript" src="js/sh_main.min.js"></script>
+    <script type="text/javascript" src="js/sh_cpp.min.js"></script>
+    <!-- Формулы -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+       src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+</head>
+<body onLoad="sh_highlightDocument()">
+<div id="content">
+    <h1>Примеры решений задач</h1>
+
+<h2>Задача "Вектор"</h2>
+
+<p>Вычислить длину вектора $\overrightarrow{a}=(x,y,z)$</p>
+
+<h3>Решение</h3>
+
+<p>Длина вектора: $|\overrightarrow{a}| = \sqrt{x^2+y^2+z^2}$</p>
+
+<pre class="sh_cpp">
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main(){
+  // Открываем входной и выходной файл
+  freopen("vector.in","r",stdin);
+  freopen("vector.out","w",stdout);
+
+  // Ввод данных
+  double x, y, z;
+  scanf("%lf %lf %lf", &x, &y, &z);
+
+  // Вычисления и вывод ответа
+  printf("%.2lf\n", sqrt(x*x + y*y + z*z));
+
+  return 0;
+}
+    </pre>
+
+<h2>Задача "Прямая по 2-м точкам"</h2>
+
+$a{x_1}+b{y_1}+c=0$ - первая точка<br>
+$a{x_2}+b{y_2}+c=0$ - вторая точка<br>
+
+<p>Решить систему из 2-х линейных уравнений с 3-мя неизвестными => 
+бесконечное количество решений (это одна прямая, и коэффициенты $a, b, c$
+у всех решений пропорциональны друг другу).</p>
+
+<p>$a = \frac{-b{y_1}-c}{x_1}$</p>
+
+<p>$\frac{-b{y_1}-c}{x_1} {x_2}+b{y_2}+c=0$</p>
+
+<p>$-b{y_1}{x_2}-c{x_2}+b{y_2}{x_1}+c{x_1}=0$</p>
+
+<p>$b({y_2}{x_1}-{y_1}{x_2})+c({x_1}-{x_2})=0$</p>
+
+$c = 1$
+
+<p>$b({y_2}{x_1}-{y_1}{x_2})+c({x_1}-{x_2})=0$</p>
+
+<p>$b = \frac{ {x_2}-{x_1} } {{y_2}{x_1}-{y_1}{x_2}}$; $c = 1$; $a = \frac{- c - b{y_1}}{x_1}$</p>
+
+<p>Умножим все уравнения на: ${{y_2}{x_1}-{y_1}{x_2}}$</p>
+
+<p>$b = {x_2}-{x_1}$; $c = {{y_2}{x_1}-{y_1}{x_2}}$; 
+
+$a = \frac{{- c - b{y_1}}}{x_1}{({{y_2}{x_1}-{y_1}{x_2}})}$</p>
+
+
+<p>$a = \frac{{- ({{y_2}{x_1}-{y_1}{x_2}}) - ({x_2}-{x_1}){y_1}}}{x_1}{({{y_2}{x_1}-{y_1}{x_2}})}$</p>
+
+<p>$a = \frac{{- {y_2}{x_1} + {y_1}{x_2} - {x_2}{y_1} + {x_1}{y_1}}} {x_1}{({{y_2}{x_1}-{y_1}{x_2}})}$</p>
+
+<p>$a = ({y_1} - {y_2}) {({{y_2}{x_1}-{y_1}{x_2}})}$</p>
+
+<p>Это частичное решение, оно работает не во всех случаях (надо отдельно разбирать когда 
+${y_2}{x_1}-{y_1}{x_2}=0$
+).</p>
+
+<h3>Другой вариант решения (для всех случаев)</h3>
+
+$a{x_1}+b{y_1}+c=0$ - первая точка<br>
+$a{x_2}+b{y_2}+c=0$ - вторая точка<br>
+
+<p>Приравниваем уравнения или вычитаем из первого уравнения второе.</p>
+
+<p>Получаем уравнение с двумя неизвестными:
+$a({x_1}-{x_2})+b({y_1}-{y_2}) = 0$</p>
+
+<p>Интуиция подсказывает решение:<br>
+$a = {y_1}-{y_2}$<br>
+$b = -({x_1}-{x_2})$<br>
+$({y_1}-{y_2})({x_1}-{x_2})-({x_1}-{x_2})({y_1}-{y_2}) = 0$</p>
+
+$c = -(a{x_1}+b{y_1}) = -a{x_1}-b{y_1} = -({y_1}-{y_2}){x_1}+({x_1}-{x_2}){y_1} =
+-\underline{{y_1}{x_1}}+{y_2}{x_1}+\underline{{x_1}{y_1}}-{x_2}{y_1}={y_2}{x_1}-{x_2}{y_1}$<br>
+
+<pre class="sh_cpp">
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main(){
+  // Открываем входной и выходной файл
+  freopen("line.in","r",stdin);
+  freopen("line.out","w",stdout);
+
+  // Ввод данных
+  double x1, y1, x2, y2;
+  scanf("%lf %lf %lf %lf", &x1, &y1, &x2, &y2);
+
+  double a = y1-y2;
+  double b = -(x1-x2);
+  double c = -(a*x1+b*y1);
+
+  // Вычисления и вывод ответа
+  printf("%.2lf %.2lf %.2lf\n", a, b, c);
+  // Проверка ответа
+  printf("%.2lf\n", a*x1 + b*y1 + c);
+  printf("%.2lf\n", a*x2 + b*y2 + c);
+
+  return 0;
+}
+</pre>
+
+</div>
+</body>
+</html>
