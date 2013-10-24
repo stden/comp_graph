@@ -132,6 +132,71 @@ int main(){
 }
 </pre>
 
+<pre class="sh_cpp">
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+const double Inf = 1.e10;
+
+double min(double a, double b){
+  return (a &lt; b) ? a : b;
+}
+
+int main(){
+  // Открываем входной и выходной файл
+  freopen("maxdist.in","r",stdin);
+  freopen("maxdist.out","w",stdout);
+
+  // Ввод данных
+  int N; // Количество вершин 
+  scanf("%d", &N);
+  double X[100], Y[100];
+  for(int i=0; i&lt;N; i++)
+    scanf("%lf %lf", &X[i], &Y[i]);
+
+  double D[100][100];
+
+  for(int i=0; i&lt;N; i++)
+    for(int j=0; j&lt;N; j++)
+      D[i][j] = (i==j) ? 0 : Inf;
+
+  int M; // Количество рёбер
+  scanf("%d", &M);
+  for(int i=0; i&lt;M; i++){
+    int from, to;
+    scanf("%d %d", &from, &to);
+    from--; to--;
+
+    double dist = sqrt(pow(X[from]-X[to],2) + pow(Y[from]-Y[to],2));
+    D[from][to] = dist;
+    D[to][from] = dist;
+  }  
+
+  // Сам алгоритм 
+  for(int k=0; k&lt;N; k++)
+    for(int i=0; i&lt;N; i++)
+      for(int j=0; j&lt;N; j++)
+        D[i][j] = min(D[i][j], D[i][k] + D[k][j]);
+
+  // Выбираем максимум 
+  double max1 = 0.0;
+  for(int i=0; i&lt;N; i++)
+    for(int j=0; j&lt;N; j++){
+      if(D[i][j] &gt; max1) {
+         max1 = D[i][j];
+      }
+    }
+
+  if((max1 &gt; 0) && (max1 &lt; Inf)){
+    printf("%0.6lf\n", max1);
+  } else {
+    printf("-1\n");
+  }
+  
+  return 0;
+}
+</pre>
+
 </div>
 </body>
 </html>
