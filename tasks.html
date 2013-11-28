@@ -197,6 +197,80 @@ int main(){
 }
 </pre>
 
+<h3>Разбор задачи о подобных треугольниках (Пифагор)</h3>
+
+<pre class="sh_cpp">
+#include &gt;stdio.h&lt;
+#include &gt;iostream&lt;
+#include &gt;algorithm&lt;
+
+using namespace std;
+
+// Задача о подобии треугольников
+
+// Треугольники подобны, когда их стороны пропорциональны
+// 1 2 3
+// 2 6 4
+// Стороны должны быть упорядочены по возрастанию
+bool similar(int a1, int b1, int c1,
+             int a2, int b2, int c2 ){
+  return (a1*b2 == b1*a2) && (b1*c2 == c1*b2);
+}
+
+int main()
+{
+    freopen("pifagor.in","r",stdin);
+    freopen("pifagor.out","w",stdout);
+
+    // Ввести исходные данные: длины сторон
+    int len[9], u[9];
+    for(int i=0; i<9; i++){
+      cin >> len[i];
+      u[i] = 0;
+    }
+
+    // Упорядочить (отсортировать) стороны по длине
+    sort(len, len + 9);
+
+    // Перебирать стороны и искать подобные треугольники
+    // Когда найдём, выведем на экран
+    for(int i=0; i<9; i++){
+      u[i] = 1;
+      for(int j=i+1; j<9; j++){
+        u[j] = 1;
+        for(int k=j+1; k<9; k++){
+          u[k] = 1;
+          for(int i2=i+1; i2<9; i2++)
+            if(!u[i2]){
+              u[i2] = 1;
+              for(int j2=j+1; j2<9; j2++)
+                if(!u[j2]){
+                    u[j2] = 1;
+                    for(int k2=k+1; k2<9; k2++)
+                      if(!u[k2]){
+                        u[k2] = 1;
+                        if(similar(len[i],len[j],len[k],
+                                   len[i2],len[j2],len[k2])){
+                          cout << len[i] << " " << len[j] << " " << len[k] << endl;
+                          cout << len[i2] << " " << len[j2] << " " << len[k2] << endl;
+                          return 0;
+                        }
+                        u[k2] = 0;
+                      }
+                    u[j2] = 0;
+                }
+              u[i2] = 0;
+            }
+          u[k] = 0;
+        }
+        u[j] = 0;
+      }
+      u[i] = 0;
+    }
+    return 0;
+}
+</pre>
+
 </div>
 </body>
 </html>
