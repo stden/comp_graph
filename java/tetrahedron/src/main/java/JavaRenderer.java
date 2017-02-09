@@ -93,6 +93,7 @@ public class JavaRenderer implements GLEventListener, KeyListener {
     }
 
     public void keyPressed(KeyEvent e) {
+        // Действия при нажатии на кнопку ESC
         if (e.getKeyCode() == KeyEvent.VK_ESCAPE) {
             JavaDia.bQuit = true;
             JavaDia.displayT = null;

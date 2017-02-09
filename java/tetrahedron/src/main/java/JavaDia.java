@@ -12,11 +12,15 @@ public class JavaDia implements Runnable {
     }
 
     public void run() {
+        // Создаём Java-окно
         Frame frame = new Frame("Jogl 3D Shape/Rotation");
+        // Активное окно для рисования OpenGL
         GLCanvas canvas = new GLCanvas();
+        // Передаём класс, который будет вызываться при отрисовке кадра
         canvas.addGLEventListener(new JavaRenderer());
+
         frame.add(canvas);
-        frame.setSize(640, 480);
+        frame.setSize(1024, 768);
         frame.setUndecorated(true);
         int size = frame.getExtendedState();
         size |= Frame.MAXIMIZED_BOTH;
