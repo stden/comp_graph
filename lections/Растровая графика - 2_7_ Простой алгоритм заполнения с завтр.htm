@@ -1,0 +1,277 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0061)http://exilim.osu.cctpu.edu.ru/diplom/algor/2.7.asp?ThemeID=2 -->
+<HTML><HEAD><TITLE>Растровая графика - 2.7. Простой алгоритм заполнения с завтравкой</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1251">
+<STYLE type=text/css>A.l:link {
+	FONT-SIZE: 8pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.l:hover {
+	FONT-SIZE: 8pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.l:active {
+	FONT-SIZE: 8pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.l:visited {
+	FONT-SIZE: 8pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.std:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #8e5717; TEXT-DECORATION: none
+}
+A.std:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #7f0000; TEXT-DECORATION: none
+}
+A.std:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #8e5717; TEXT-DECORATION: none
+}
+A.std:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #8e5717; TEXT-DECORATION: none
+}
+A.li:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.li:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.li:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.li:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.lil:link {
+	FONT-SIZE: 11pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.lil:hover {
+	FONT-SIZE: 11pt; COLOR: #7f0000; TEXT-DECORATION: none
+}
+A.lil:active {
+	FONT-SIZE: 11pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.lil:visited {
+	FONT-SIZE: 11pt; COLOR: #666666; TEXT-DECORATION: none
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY style="FONT-SIZE: 11pt; COLOR: #000000; FONT-FAMILY: Arial" 
+bgColor=#f1efec leftMargin=0 topMargin=0>
+<TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 cellPadding=0 
+width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=1><A 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/index.html"><IMG height=116 
+      alt="" 
+      src="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/untitled-1%20copy.jpg" 
+      width=800 border=0></A></TD>
+    <TD width="100%" bgColor=#633207></TD></TR>
+  <TR>
+    <TD colSpan=2>
+      <TABLE 
+      style="BORDER-TOP-WIDTH: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 11pt; BORDER-LEFT-COLOR: #8e5717; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #8e5717; COLOR: #000000; BORDER-TOP-COLOR: #8e5717; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #8e5717" 
+      cellSpacing=1 cellPadding=0 width="100%" bgColor=#8e5717 border=0>
+        <TBODY>
+        <TR align=middle>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid" 
+          width=145 bgColor=#ff8c00><A class=std 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/algor/index.asp">Алгоритмические<BR>основы</A></TD>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid" 
+          width=135 bgColor=#ff8c00><A class=std 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/matem/index.asp">Математические<BR>основы</A></TD>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid" 
+          width=70 bgColor=#ff8c00><A class=std 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/flash/index.asp">Flash 
+            5</A></TD>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid" 
+          width=100 bgColor=#ff8c00><A class=std 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/corel/index.asp">CorelDraw 
+            10</A></TD>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid" 
+          width=120 bgColor=#ff8c00><A class=std 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/3d/index.asp">3D Studio 
+            Max3</A></TD>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BACKGROUND-POSITION: left 50%; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid; BACKGROUND-REPEAT: repeat-x" 
+          align=left 
+          background="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/dot1.gif" 
+          bgColor=#ff8c00><IMG height=16 alt="" 
+            src="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/arrow.gif" 
+            width=21 border=0></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD bgColor=#cccccc colSpan=2><IMG height=1 alt="" 
+      src="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/0.gif" 
+      width=10 border=0><A class=li 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/progr/index.asp">[программа]</A> 
+      <A class=li 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/tests/index.asp">[тесты]</A> 
+      <A class=li 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/labs/index.asp">[лабораторные]</A> 
+      <A class=li 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/quest/index.asp">[вопросы]</A> 
+      <A class=li 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/litra/index.asp">[литература]</A><BR><IMG 
+      height=4 alt="" 
+      src="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/0.gif" 
+      width=1 border=0></TD></TR>
+  <TR>
+    <TD bgColor=#666666 colSpan=2><IMG height=2 alt="" 
+      src="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/0.gif" 
+      width=1 border=0></TD></TR>
+  <TR>
+    <TD colSpan=2>
+      <TABLE style="FONT-SIZE: 11pt; COLOR: #000000; TEXT-ALIGN: justify" 
+      cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top align=right width=140><IMG height=48 alt="" 
+            src="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/trian.gif" 
+            width=70 border=0></TD>
+          <TD><BR><BR>
+            <P style="FONT-SIZE: 12pt; COLOR: #666666"><B>2. Растровая 
+            графика</B></P><BR><B>2.7. Простой алгоритм заполнения с 
+            завтравкой</B>
+            <P>В обсуждавшихся выше алгоритмах заполнение происходит в порядке 
+            сканирования. Иной подход используется в алгоритмах заполнения с 
+            затравкой. В них предполагается, что известен хотя бы один пиксел из 
+            внутренней области многоугольника. Алгоритм пытается найти и 
+            закрасить все другие пикселы, принадлежащие внутренней области. 
+            Области могут быть либо внутренне-, либо гранично-определенными. 
+            Если область относится к внутренне-определенным, то все пикселы, 
+            принадлежащие внутренней части, имеют один и тот же цвет или 
+            интенсивность, а все пикселы, внешние по отношению к области, имеют 
+            другой цвет. Это продемонстрировано на рис. 2.12. Если область 
+            относится к гранично-определенным, то все пикселы на границе области 
+            имеют выделенное значение или цвет, как это показано на рис. 2.13. 
+            Ни один из пикселов из внутренней части такой области не может иметь 
+            это выделенное значение. Тем не менее пикселы, внешние по отношению 
+            к границе, также могут иметь граничное значение. Алгоритмы, 
+            заполняющие внутренне-определенные области, называются 
+            внутренне-заполняющими, а алгоритмы для гранично-определенных 
+            областей - гранично-заполняющими. Далее будут обсуждаться 
+            гранично-заполняющие алгоритмы, однако соответствующие 
+            внутренне-заполняющие алгоритмы можно получить аналогичным образом.
+            <P>
+            <CENTER><IMG height=172 
+            alt="Рис. 2.12. Внутренне-определенная область" 
+            src="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/2.12.gif" 
+            width=238 border=0><IMG height=174 
+            alt="Рис. 2.13. Гранично-определенная область" 
+            src="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/2.13.gif" 
+            width=232 border=0>
+            <P></CENTER>Внутренне- или гранично-определенные области могут быть 
+            4-или 8-связными. Если область 4-связная, то любого пиксела в 
+            области можно достичь с помощью комбинации движений только в 4 
+            направлениях: налево, направо, вверх, вниз. Для 8-связной области 
+            пиксела можно достичь с помощью комбинации движений в двух 
+            горизонтальных, двух вертикальных и 4 диагональных направлениях 
+            (рис. 2.14).
+            <P>
+            <CENTER><IMG height=163 
+            alt="Рис.2.14. 4- и 8-связные внутренне-определенные области" 
+            src="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/2.14.gif" 
+            width=392 border=0>
+            <P></CENTER>Далее речь в основном пойдет об алгоритмах для 4-связных 
+            областей, однако их можно легко переделать для 8-связных областей, 
+            если заполнение проводить не в 4, а в 8 направлениях.
+            <P>Используя стек, можно разработать простой алгоритм заполнения 
+            гранично-определенной области. Стек - это просто массив или другая 
+            структура данных, в которую можно последовательно пометить значения 
+            и из которой их можно последовательно извлекать. Когда новые 
+            значения добавляются или помещаются в стек, все остальные значения 
+            опускаются вниз на один уровень. Когда значения удаляются или 
+            извлекаются из стека, остальные значения всплывают или поднимаются 
+            вверх на один уровень. Такой стек называется стеком прямого 
+            действия. Простой алгоритм заполнения с затравкой можно представить 
+            в следующем виде:
+            <P><B>Простой алгоритм заполнения с затравкой и 
+            стеком.</B><BR>Поместить затравочный пиксел в стек<BR>Пока стек не 
+            пуст<BR>&nbsp;&nbsp;Извлечь пиксел из стека<BR>&nbsp;&nbsp;Присвоить 
+            пикселу требуемое значение<BR>&nbsp;&nbsp;Для каждого из соседних к 
+            текущему 4-связных пикселов проверить: является ли он граничным 
+            пикселом или &nbsp;&nbsp;не присвоено ли уже пикселу требуемое 
+            значение. Проигнорировать пиксел в любом из этих двух случаев. 
+            &nbsp;&nbsp;В противном случае поместить пиксел в стек.
+            <P>Приведем более формальное изложение алгоритма, в котором 
+            предполагается существование затравочного пиксела и 
+            гранично-определенной области:<BR><I>Затравка(х, у)</I> - выдает 
+            затравочный пиксел<BR><I>Push</I> - процедура, которая помещает 
+            пиксел в стек<BR><I>Pop</I> - процедура, которая извлекает пиксел из 
+            стека
+            <P><CODE style="FONT-SIZE: 12pt">
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000">
+              <TBODY>
+              <TR>
+                <TD width="60%">Пиксел(х, у) = Затравка(х, у)</TD>
+                <TD vAlign=top></TD></TR>
+              <TR>
+                <TD width="60%">Push Пиксел(х, у)<BR>while (стек не 
+                пуст)<BR></TD>
+                <TD vAlign=top>/ инициализируем стек</TD></TR>
+              <TR>
+                <TD vAlign=top width="60%">Pop Пиксел(х, у)<BR>if Пиксел(х, у) 
+                  &lt;&gt; Нов_значение then<BR>Пиксел(х, у) = 
+                  Нов_значение<BR>end if</TD>
+                <TD vAlign=top>/ извлекаем пиксел из стека</TD></TR>
+              <TR>
+                <TD width="60%">if (Пиксел(х + 1, у) &lt;&gt; Нов_значение 
+                  and<BR>Пиксел(х + 1, у) &lt;&gt; Гран_значение) then<BR>Push 
+                  Пиксел (х + 1, у)<BR>if (Пиксел(х, у + 1) &lt;&gt; 
+                  Нов_значение and <BR>Пиксел(х, у + 1) &lt;&gt; Гран_значение) 
+                  then<BR>Push Пиксел (х, у + 1)<BR>if (Пиксел(х - 1, у) 
+                  &lt;&gt; Нов_значение and<BR>Пиксел(х - 1, у) &lt;&gt; 
+                  Гран_значение) then<BR>Push Пиксел (х - 1, у)<BR>if (Пиксел(х, 
+                  у — 1) &lt;&gt; Нов_значение and<BR>Пиксел(х, у - 1) &lt;&gt; 
+                  Гран_значение) then<BR>Push Пиксел (х, у - 1)<BR>end if<BR>end 
+                  while<BR></TD>
+                <TD vAlign=top></TD></TR></TBODY></TABLE>
+            <P></CODE><B>Пример 2.3. Алгоритм заполнения многоугольника с 
+            затравкой.</B><BR>В качестве примера применения алгоритма рассмотрим 
+            гранично-определенную область, содержащую дыру. Она изображена на 
+            рис. 2.15.
+            <P>
+            <CENTER><IMG height=302 
+            alt="Рис. 2.15. Затравочное заполнение области с отверстием с помощью простого стекового алгоритма" 
+            src="Растровая графика - 2_7_ Простой алгоритм заполнения с завтравкой.files/2.15.gif" 
+            width=524 border=0></CENTER>
+            <P>Вершины многоугольника заданы пикселами (1,0), (7,0), (8,1), 
+            (8,4), (6,6), (1,6), (0,5) и (0,1). Внутренняя дыра определяется 
+            пикселами (3,2), (5,2), (5,3), (3,3). Затравочный пиксел — (4,4). 
+            Порядок заполнения указан на рисунке линией со стрелками. Числа в 
+            квадратике пиксела показывают позицию в стеке, занимаемую пикселом. 
+            Когда обработка доходит до пиксела (3,1), все окружающие его 
+            4-связные пикселы либо уже заполнены, либо являются граничными. 
+            Поэтому ни один из пикселов не помещается в стек. Глубина стека в 
+            этот момент равна 15. В стеке находятся пикселы (7,1), (7,2), (7,3), 
+            (6,5), (7,4), (6,5), (3,1), (1,2), (1,3), (1,4), (2,5), (3,5), 
+            (4,5), (5,4).
+            <P>После удаления из стека пиксела (7,1) заполняется колонка (7,1), 
+            (7,2), (7,3), (7,4), при этом ни один новый пиксел в стек не 
+            добавляется. Для пиксела (7,4) снова все 4-связные окружающие 
+            пикселы либо уже заполнены, либо являются граничными. Обращаясь к 
+            стеку, алгоритм извлекает пиксел (6,5), его заполнение завершает 
+            заполнение всего многоугольника. Дальнейшая o6работка происходит без 
+            какого-либо заполнения, и когда стек становится пустым, алгортм 
+            завершает работу.
+            <P>
+            <DIV align=center><A class=lil 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/algor/2.6.asp?ThemeID=2">назад</A> 
+            | <A class=lil 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/algor/index.asp">содержание</A> 
+            | <A class=lil 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/algor/2.8.asp?ThemeID=2">вперед</A></DIV></TD>
+          <TD width=30></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD align=right>
+            <HR color=#cccccc>
+            <A class=l href="mailto:aqua@mail.ru">© ОСУ АВТФ</A>
+            <P></P></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BODY></HTML>
