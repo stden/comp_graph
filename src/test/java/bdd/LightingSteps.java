@@ -19,23 +19,23 @@ public class LightingSteps {
     private float illumination;
     private static final float EPSILON = 0.1f;
 
-    @Дано("точка на поверхности \\({float}, {float}, {float})")
+    @Дано("точка на поверхности \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void точка_на_поверхности(float x, float y, float z) {
         surfacePoint = new Vector3D(x, y, z);
     }
 
-    @Дано("нормаль поверхности \\({float}, {float}, {float})")
+    @Дано("нормаль поверхности \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void нормаль_поверхности(float x, float y, float z) {
         normal = new Vector3D(x, y, z);
         normal.normalize();
     }
 
-    @Дано("источник света в точке \\({float}, {float}, {float}) с интенсивностью {float}")
+    @Дано("источник света в точке \\({floatNumber}, {floatNumber}, {floatNumber}) с интенсивностью {floatNumber}")
     public void источник_света_с_интенсивностью(float x, float y, float z, float intensity) {
         light = new Light(new Vector3D(x, y, z), intensity);
     }
 
-    @Дано("материал с коэффициентом диффузного отражения {float}")
+    @Дано("материал с коэффициентом диффузного отражения {floatNumber}")
     public void материал_с_коэффициентом_диффузного_отражения(float diffuse) {
         material = new Material(0.1f, diffuse, 0.0f, 1.0f);
     }
@@ -48,18 +48,18 @@ public class LightingSteps {
         illumination = Lighting.lambert(normal, lightDir, light.intensity, material.diffuse);
     }
 
-    @Тогда("интенсивность освещения около {float}")
+    @Тогда("интенсивность освещения около {floatNumber}")
     public void интенсивность_освещения_около(float expected) {
         assertEquals("Интенсивность", expected, illumination, EPSILON);
     }
 
-    @Дано("направление взгляда \\({float}, {float}, {float})")
+    @Дано("направление взгляда \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void направление_взгляда(float x, float y, float z) {
         viewDir = new Vector3D(x, y, z);
         viewDir.normalize();
     }
 
-    @Дано("источник света в точке \\({float}, {float}, {float})")
+    @Дано("источник света в точке \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void источник_света_в_точке(float x, float y, float z) {
         light = new Light(new Vector3D(x, y, z), 1.0f);
     }
@@ -79,7 +79,7 @@ public class LightingSteps {
         assertTrue("Зеркальная составляющая > 0", illumination > 0.1f);
     }
 
-    @Дано("источник света в точке \\({float}, {float}, {float}) под углом {int} градусов")
+    @Дано("источник света в точке \\({floatNumber}, {floatNumber}, {floatNumber}) под углом {int} градусов")
     public void источник_света_под_углом(float x, float y, float z, int angle) {
         light = new Light(new Vector3D(x, y, z), 1.0f);
         material = new Material(0.1f, 0.8f, 0.0f, 1.0f);
@@ -97,7 +97,7 @@ public class LightingSteps {
         assertTrue("Интенсивность под углом меньше", illumination < 0.9f);
     }
 
-    @Дано("источник света в точке \\({float}, {float}, {float}) сзади поверхности")
+    @Дано("источник света в точке \\({floatNumber}, {floatNumber}, {floatNumber}) сзади поверхности")
     public void источник_света_сзади_поверхности(float x, float y, float z) {
         light = new Light(new Vector3D(x, y, z), 1.0f);
         material = new Material(0.0f, 0.8f, 0.0f, 1.0f);
@@ -110,6 +110,7 @@ public class LightingSteps {
 
     @Когда("вычисляю освещение по модели Блинна-Фонга")
     public void вычисляю_освещение_по_модели_блинна_фонга() {
+        ensureLightingDefaults();
         illumination = Lighting.blinnPhong(surfacePoint, normal, viewDir, light, material, 0.1f);
     }
 
@@ -118,7 +119,7 @@ public class LightingSteps {
         assertTrue("Блинн-Фонг работает", illumination > 0);
     }
 
-    @Дано("материал с параметрами: ambient={float}, diffuse={float}, specular={float}, shininess={float}")
+    @Дано("материал с параметрами: ambient={floatNumber}, diffuse={floatNumber}, specular={floatNumber}, shininess={floatNumber}")
     public void материал_с_параметрами(float ka, float kd, float ks, float n) {
         material = new Material(ka, kd, ks, n);
         surfacePoint = new Vector3D(0, 0, 0);
@@ -127,7 +128,7 @@ public class LightingSteps {
         viewDir = new Vector3D(0, 0, 1);
     }
 
-    @Дано("точка на поверхности \\({float}, {float}, {float}) с нормалью \\({float}, {float}, {float})")
+    @Дано("точка на поверхности \\({floatNumber}, {floatNumber}, {floatNumber}) с нормалью \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void точка_на_поверхности_с_нормалью(float px, float py, float pz, float nx, float ny, float nz) {
         surfacePoint = new Vector3D(px, py, pz);
         normal = new Vector3D(nx, ny, nz);
@@ -144,14 +145,23 @@ public class LightingSteps {
         assertTrue("Освещение вычислено", illumination >= 0.0f && illumination <= 1.0f);
     }
 
-    @Когда("вычисляю освещение по модели Блинна-Фонга")
-    public void вычисляю_освещение_по_модели_блинна_фонга_initialized() {
-        // Инициализируем недостающие параметры если они null
-        if (surfacePoint == null) surfacePoint = new Vector3D(0, 0, 0);
-        if (normal == null) normal = new Vector3D(0, 0, 1);
-        if (viewDir == null) viewDir = new Vector3D(0, 0, 1);
-        if (light == null) light = new Light(new Vector3D(0, 0, 10), 1.0f);
-        if (material == null) material = new Material(0.1f, 0.6f, 0.3f, 32.0f);
-        illumination = Lighting.blinnPhong(surfacePoint, normal, viewDir, light, material, 0.1f);
+    private void ensureLightingDefaults() {
+        if (surfacePoint == null) {
+            surfacePoint = new Vector3D(0, 0, 0);
+        }
+        if (normal == null) {
+            normal = new Vector3D(0, 0, 1);
+            normal.normalize();
+        }
+        if (viewDir == null) {
+            viewDir = new Vector3D(0, 0, 1);
+            viewDir.normalize();
+        }
+        if (light == null) {
+            light = new Light(new Vector3D(0, 0, 10), 1.0f);
+        }
+        if (material == null) {
+            material = new Material(0.1f, 0.6f, 0.3f, 32.0f);
+        }
     }
 }

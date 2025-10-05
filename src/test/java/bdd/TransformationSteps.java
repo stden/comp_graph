@@ -18,23 +18,23 @@ public class TransformationSteps {
     private Vector3D transformedPoint3D;
     private static final double EPSILON = 0.01;
 
-    @Дано("точка с координатами \\({double}, {double})")
+    @Дано("точка с координатами \\({doubleNumber}, {doubleNumber})")
     public void точка_с_координатами_2d(double x, double y) {
         point2D = new double[]{x, y};
     }
 
-    @Дано("матрица переноса на вектор \\({double}, {double})")
+    @Дано("матрица переноса на вектор \\({doubleNumber}, {doubleNumber})")
     public void матрица_переноса(double tx, double ty) {
         transform2D = Transform2D.translate(tx, ty);
     }
 
-    @Дано("матрица поворота на {double} градусов")
+    @Дано("матрица поворота на {doubleNumber} градусов")
     public void матрица_поворота(double degrees) {
         double radians = Math.toRadians(degrees);
         transform2D = Transform2D.rotate(radians);
     }
 
-    @Дано("матрица масштабирования с коэффициентами \\({double}, {double})")
+    @Дано("матрица масштабирования с коэффициентами \\({doubleNumber}, {doubleNumber})")
     public void матрица_масштабирования(double sx, double sy) {
         transform2D = Transform2D.scale(sx, sy);
     }
@@ -49,28 +49,28 @@ public class TransformationSteps {
         }
     }
 
-    @Тогда("точка перемещается в \\({double}, {double})")
+    @Тогда("точка перемещается в \\({doubleNumber}, {doubleNumber})")
     public void точка_перемещается_в(double expectedX, double expectedY) {
         assertNotNull("Трансформация выполнена", transformedPoint2D);
         assertEquals("X координата", expectedX, transformedPoint2D[0], EPSILON);
         assertEquals("Y координата", expectedY, transformedPoint2D[1], EPSILON);
     }
 
-    @Тогда("точка поворачивается приблизительно в \\({double}, {double})")
+    @Тогда("точка поворачивается приблизительно в \\({doubleNumber}, {doubleNumber})")
     public void точка_поворачивается_приблизительно_в(double expectedX, double expectedY) {
         assertNotNull("Трансформация выполнена", transformedPoint2D);
         assertEquals("X координата после поворота", expectedX, transformedPoint2D[0], 0.1);
         assertEquals("Y координата после поворота", expectedY, transformedPoint2D[1], 0.1);
     }
 
-    @Тогда("точка масштабируется в \\({double}, {double})")
+    @Тогда("точка масштабируется в \\({doubleNumber}, {doubleNumber})")
     public void точка_масштабируется_в(double expectedX, double expectedY) {
         assertNotNull("Трансформация выполнена", transformedPoint2D);
         assertEquals("X координата", expectedX, transformedPoint2D[0], EPSILON);
         assertEquals("Y координата", expectedY, transformedPoint2D[1], EPSILON);
     }
 
-    @Дано("последовательность трансформаций: поворот {double}°, затем перенос \\({double}, {double})")
+    @Дано("последовательность трансформаций: поворот {doubleNumber}°, затем перенос \\({doubleNumber}, {doubleNumber})")
     public void последовательность_трансформаций(double degrees, double tx, double ty) {
         double radians = Math.toRadians(degrees);
         Transform2D rotation = Transform2D.rotate(radians);
@@ -89,12 +89,12 @@ public class TransformationSteps {
         assertTrue("Точка трансформирована", transformedPoint2D.length == 2);
     }
 
-    @Дано("3D точка с координатами \\({double}, {double}, {double})")
+    @Дано("3D точка с координатами \\({doubleNumber}, {doubleNumber}, {doubleNumber})")
     public void точка_3d_с_координатами(double x, double y, double z) {
         point3D = new Vector3D((float)x, (float)y, (float)z);
     }
 
-    @Дано("перспективная проекция с углом обзора {double} градусов")
+    @Дано("перспективная проекция с углом обзора {doubleNumber} градусов")
     public void перспективная_проекция(double fovDegrees) {
         double fovRadians = Math.toRadians(fovDegrees);
         matrix4 = Matrix4.perspective(fovRadians, 1.0, 0.1, 100.0);
@@ -111,18 +111,18 @@ public class TransformationSteps {
         assertNotNull("Проекция выполнена", transformedPoint3D);
     }
 
-    @Дано("позиция камеры в точке \\({double}, {double}, {double})")
+    @Дано("позиция камеры в точке \\({doubleNumber}, {doubleNumber}, {doubleNumber})")
     public void позиция_камеры(double x, double y, double z) {
         // Сохраняем позицию камеры для последующего использования
         point3D = new Vector3D((float)x, (float)y, (float)z);
     }
 
-    @Дано("цель взгляда в точке \\({double}, {double}, {double})")
+    @Дано("цель взгляда в точке \\({doubleNumber}, {doubleNumber}, {doubleNumber})")
     public void цель_взгляда(double x, double y, double z) {
         // Цель сохранена
     }
 
-    @Дано("вектор {string} \\({double}, {double}, {double})")
+    @Дано("вектор {string} \\({doubleNumber}, {doubleNumber}, {doubleNumber})")
     public void вектор_вверх(String name, double x, double y, double z) {
         // Вектор "вверх" сохранён
     }

@@ -19,7 +19,7 @@ public class RayTracingSteps {
     private Scene scene;
     private static final float EPSILON = 0.01f;
 
-    @Дано("луч с началом \\({float}, {float}, {float}) и направлением \\({float}, {float}, {float})")
+    @Дано("луч с началом \\({floatNumber}, {floatNumber}, {floatNumber}) и направлением \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void луч_с_началом_и_направлением(float ox, float oy, float oz, float dx, float dy, float dz) {
         Vector3D origin = new Vector3D(ox, oy, oz);
         Vector3D direction = new Vector3D(dx, dy, dz);
@@ -27,7 +27,7 @@ public class RayTracingSteps {
         ray = new Ray(origin, direction);
     }
 
-    @Дано("сфера с центром \\({float}, {float}, {float}) и радиусом {float}")
+    @Дано("сфера с центром \\({floatNumber}, {floatNumber}, {floatNumber}) и радиусом {floatNumber}")
     public void сфера_с_центром_и_радиусом(float x, float y, float z, float radius) {
         Vector3D center = new Vector3D(x, y, z);
         Material material = new Material(0.1f, 0.8f, 0.2f, 32.0f);
@@ -39,7 +39,7 @@ public class RayTracingSteps {
         hitRecord = sphere.hit(ray, tMin, tMax);
     }
 
-    @Тогда("луч пересекает сферу в точке \\({float}, {float}, {float})")
+    @Тогда("луч пересекает сферу в точке \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void луч_пересекает_сферу_в_точке(float x, float y, float z) {
         assertNotNull("Пересечение найдено", hitRecord);
         assertEquals("X точки пересечения", x, hitRecord.point.x, EPSILON);
@@ -47,7 +47,7 @@ public class RayTracingSteps {
         assertEquals("Z точки пересечения", z, hitRecord.point.z, EPSILON);
     }
 
-    @Тогда("нормаль в точке пересечения \\({float}, {float}, {float})")
+    @Тогда("нормаль в точке пересечения \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void нормаль_в_точке_пересечения(float nx, float ny, float nz) {
         assertNotNull("Пересечение найдено", hitRecord);
         assertEquals("X нормали", nx, hitRecord.normal.x, EPSILON);
@@ -60,7 +60,7 @@ public class RayTracingSteps {
         assertNull("Пересечение не найдено", hitRecord);
     }
 
-    @Дано("плоскость Y={float} с нормалью \\({float}, {float}, {float})")
+    @Дано("плоскость Y={floatNumber} с нормалью \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void плоскость_с_нормалью(float planeY, float nx, float ny, float nz) {
         Vector3D point = new Vector3D(0, planeY, 0);
         Vector3D normal = new Vector3D(nx, ny, nz);
@@ -73,7 +73,7 @@ public class RayTracingSteps {
         hitRecord = plane.hit(ray, tMin, tMax);
     }
 
-    @Тогда("луч пересекает плоскость в точке \\({float}, {float}, {float})")
+    @Тогда("луч пересекает плоскость в точке \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void луч_пересекает_плоскость_в_точке(float x, float y, float z) {
         assertNotNull("Пересечение с плоскостью найдено", hitRecord);
         assertEquals("X точки пересечения", x, hitRecord.point.x, EPSILON);
@@ -81,7 +81,7 @@ public class RayTracingSteps {
         assertEquals("Z точки пересечения", z, hitRecord.point.z, EPSILON);
     }
 
-    @Дано("диапазон расстояний от {float} до {float}")
+    @Дано("диапазон расстояний от {floatNumber} до {floatNumber}")
     public void диапазон_расстояний(float min, float max) {
         tMin = min;
         tMax = max;
@@ -92,13 +92,13 @@ public class RayTracingSteps {
         hitRecord = sphere.hit(ray, tMin, tMax);
     }
 
-    @Тогда("пересечение найдено на расстоянии {float}")
+    @Тогда("пересечение найдено на расстоянии {floatNumber}")
     public void пересечение_найдено_на_расстоянии(float expectedT) {
         assertNotNull("Пересечение в диапазоне найдено", hitRecord);
         assertEquals("Расстояние до пересечения", expectedT, hitRecord.t, EPSILON);
     }
 
-    @Дано("сцена содержит сферу в \\({float}, {float}, {float})")
+    @Дано("сцена содержит сферу в \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void сцена_содержит_сферу(float x, float y, float z) {
         if (scene == null) {
             scene = new Scene();
@@ -107,7 +107,7 @@ public class RayTracingSteps {
         scene.add(new Sphere(new Vector3D(x, y, z), 1.0f, material));
     }
 
-    @Дано("сцена содержит плоскость Y={float}")
+    @Дано("сцена содержит плоскость Y={floatNumber}")
     public void сцена_содержит_плоскость(float y) {
         if (scene == null) {
             scene = new Scene();
@@ -116,7 +116,7 @@ public class RayTracingSteps {
         scene.add(new Plane(new Vector3D(0, y, 0), new Vector3D(0, 1, 0), material));
     }
 
-    @Когда("пускаю луч \\({float}, {float}, {float}) в направлении \\({float}, {float}, {float})")
+    @Когда("пускаю луч \\({floatNumber}, {floatNumber}, {floatNumber}) в направлении \\({floatNumber}, {floatNumber}, {floatNumber})")
     public void пускаю_луч(float ox, float oy, float oz, float dx, float dy, float dz) {
         Vector3D origin = new Vector3D(ox, oy, oz);
         Vector3D direction = new Vector3D(dx, dy, dz);
@@ -125,7 +125,7 @@ public class RayTracingSteps {
         hitRecord = scene.hit(ray, 0.1f, 1000.0f);
     }
 
-    @Тогда("луч попадает в ближайшую сферу на расстоянии {float}")
+    @Тогда("луч попадает в ближайшую сферу на расстоянии {floatNumber}")
     public void луч_попадает_в_ближайшую_сферу(float expectedT) {
         assertNotNull("Попадание в сферу", hitRecord);
         assertEquals("Расстояние до ближайшей сферы", expectedT, hitRecord.t, EPSILON);
@@ -136,7 +136,7 @@ public class RayTracingSteps {
         hitRecord = sphere.hit(ray, tMin, tMax);
     }
 
-    @Тогда("результат {string}")
+    @Тогда("результат {intersectionResult}")
     public void результат(String expectedResult) {
         if (expectedResult.equals("пересекает")) {
             assertNotNull("Пересечение найдено", hitRecord);
