@@ -136,6 +136,35 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Pitest mutation testing plugin -->
+            <plugin>
+                <groupId>org.pitest</groupId>
+                <artifactId>pitest-maven</artifactId>
+                <version>1.15.3</version>
+                <configuration>
+                    <targetClasses>
+                        <param>graphics.*</param>
+                        <param>math3d.*</param>
+                    </targetClasses>
+                    <targetTests>
+                        <param>graphics.*Test</param>
+                        <param>math3d.*Test</param>
+                    </targetTests>
+                    <mutators>
+                        <mutator>DEFAULTS</mutator>
+                    </mutators>
+                    <outputFormats>
+                        <outputFormat>HTML</outputFormat>
+                        <outputFormat>XML</outputFormat>
+                    </outputFormats>
+                    <timestampedReports>false</timestampedReports>
+                    <jvmArgs>
+                        <jvmArg>--add-opens=java.base/java.lang=ALL-UNNAMED</jvmArg>
+                        <jvmArg>--add-opens=java.base/java.util=ALL-UNNAMED</jvmArg>
+                    </jvmArgs>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
