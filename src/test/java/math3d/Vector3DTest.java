@@ -360,4 +360,267 @@ public class Vector3DTest extends Assert {
         // Разные векторы не равны
         assertNotEquals("v1 != v3", v1, v3);
     }
+
+    // ============ ДОПОЛНИТЕЛЬНЫЕ ТЕСТЫ ДЛЯ УБИЙСТВА МУТАЦИЙ ============
+
+    @Test
+    public void testAddAllComponents() {
+        // Тест на сложение всех трёх компонент
+        Vector3D v1 = new Vector3D(1.0f, 2.0f, 3.0f);
+        Vector3D v2 = new Vector3D(10.0f, 20.0f, 30.0f);
+
+        v1.add(v2);
+
+        assertEquals("X: 1 + 10 = 11", 11.0f, v1.x, EPSILON);
+        assertEquals("Y: 2 + 20 = 22", 22.0f, v1.y, EPSILON);
+        assertEquals("Z: 3 + 30 = 33", 33.0f, v1.z, EPSILON);
+    }
+
+    @Test
+    public void testSubAllComponents() {
+        // Тест на вычитание всех трёх компонент
+        Vector3D v1 = new Vector3D(10.0f, 20.0f, 30.0f);
+        Vector3D v2 = new Vector3D(1.0f, 2.0f, 3.0f);
+
+        v1.sub(v2);
+
+        assertEquals("X: 10 - 1 = 9", 9.0f, v1.x, EPSILON);
+        assertEquals("Y: 20 - 2 = 18", 18.0f, v1.y, EPSILON);
+        assertEquals("Z: 30 - 3 = 27", 27.0f, v1.z, EPSILON);
+    }
+
+    @Test
+    public void testScaleAllComponents() {
+        // Тест на масштабирование всех трёх компонент
+        Vector3D v = new Vector3D(2.0f, 3.0f, 4.0f);
+        v.scale(5.0f);
+
+        assertEquals("X: 2 * 5 = 10", 10.0f, v.x, EPSILON);
+        assertEquals("Y: 3 * 5 = 15", 15.0f, v.y, EPSILON);
+        assertEquals("Z: 4 * 5 = 20", 20.0f, v.z, EPSILON);
+    }
+
+    @Test
+    public void testInverseAllComponents() {
+        // Тест на инверсию всех трёх компонент
+        Vector3D v = new Vector3D(5.0f, -3.0f, 7.0f);
+        v.inverse();
+
+        assertEquals("X: -5", -5.0f, v.x, EPSILON);
+        assertEquals("Y: 3", 3.0f, v.y, EPSILON);
+        assertEquals("Z: -7", -7.0f, v.z, EPSILON);
+    }
+
+    @Test
+    public void testLengthFormula() {
+        // Тест на формулу длины: sqrt(x² + y² + z²)
+        Vector3D v = new Vector3D(2.0f, 3.0f, 6.0f);
+        float length = v.length();
+        // sqrt(4 + 9 + 36) = sqrt(49) = 7
+        assertEquals("Длина = 7", 7.0f, length, EPSILON);
+    }
+
+    @Test
+    public void testNormalizeAllComponents() {
+        // Тест на нормализацию: каждая компонента делится на длину
+        Vector3D v = new Vector3D(0.0f, 3.0f, 4.0f);  // длина = 5
+        v.normalize();
+
+        assertEquals("X: 0/5 = 0", 0.0f, v.x, EPSILON);
+        assertEquals("Y: 3/5 = 0.6", 0.6f, v.y, EPSILON);
+        assertEquals("Z: 4/5 = 0.8", 0.8f, v.z, EPSILON);
+    }
+
+    @Test
+    public void testDotProductFormula() {
+        // Тест на формулу скалярного произведения: x*x + y*y + z*z
+        Vector3D v1 = new Vector3D(1.0f, 2.0f, 3.0f);
+        Vector3D v2 = new Vector3D(4.0f, 5.0f, 6.0f);
+
+        float dot = v1.dot(v2);
+        // 1*4 + 2*5 + 3*6 = 4 + 10 + 18 = 32
+        assertEquals("Dot product = 32", 32.0f, dot, EPSILON);
+    }
+
+    @Test
+    public void testCrossProductFormula() {
+        // Тест на формулу векторного произведения
+        Vector3D v1 = new Vector3D(1.0f, 2.0f, 3.0f);
+        Vector3D v2 = new Vector3D(4.0f, 5.0f, 6.0f);
+
+        Vector3D cross = v1.cross(v2);
+        // x = y1*z2 - z1*y2 = 2*6 - 3*5 = 12 - 15 = -3
+        // y = z1*x2 - x1*z2 = 3*4 - 1*6 = 12 - 6 = 6
+        // z = x1*y2 - y1*x2 = 1*5 - 2*4 = 5 - 8 = -3
+        assertEquals("Cross X = -3", -3.0f, cross.x, EPSILON);
+        assertEquals("Cross Y = 6", 6.0f, cross.y, EPSILON);
+        assertEquals("Cross Z = -3", -3.0f, cross.z, EPSILON);
+    }
+
+    @Test
+    public void testDistanceFormula() {
+        // Тест на формулу расстояния
+        Vector3D v1 = new Vector3D(1.0f, 2.0f, 3.0f);
+        Vector3D v2 = new Vector3D(4.0f, 6.0f, 3.0f);
+
+        float distance = v1.distance(v2);
+        // dx=3, dy=4, dz=0, sqrt(9+16+0) = 5
+        assertEquals("Distance = 5", 5.0f, distance, EPSILON);
+    }
+
+    @Test
+    public void testDistanceAllComponents() {
+        // Тест на все компоненты в формуле расстояния
+        Vector3D v1 = new Vector3D(0.0f, 0.0f, 0.0f);
+        Vector3D v2 = new Vector3D(1.0f, 2.0f, 2.0f);
+
+        float distance = v1.distance(v2);
+        // sqrt(1 + 4 + 4) = 3
+        assertEquals("Distance = 3", 3.0f, distance, EPSILON);
+    }
+
+    @Test
+    public void testEqualsWithNull() {
+        Vector3D v = new Vector3D(1.0f, 2.0f, 3.0f);
+        assertFalse("Не равен null", v.equals(null));
+    }
+
+    @Test
+    public void testEqualsWithDifferentClass() {
+        Vector3D v = new Vector3D(1.0f, 2.0f, 3.0f);
+        assertFalse("Не равен строке", v.equals("vector"));
+    }
+
+    @Test
+    public void testEqualsDifferentX() {
+        Vector3D v1 = new Vector3D(1.0f, 2.0f, 3.0f);
+        Vector3D v2 = new Vector3D(9.0f, 2.0f, 3.0f);
+        assertNotEquals("Разные X", v1, v2);
+    }
+
+    @Test
+    public void testEqualsDifferentY() {
+        Vector3D v1 = new Vector3D(1.0f, 2.0f, 3.0f);
+        Vector3D v2 = new Vector3D(1.0f, 9.0f, 3.0f);
+        assertNotEquals("Разные Y", v1, v2);
+    }
+
+    @Test
+    public void testEqualsDifferentZ() {
+        Vector3D v1 = new Vector3D(1.0f, 2.0f, 3.0f);
+        Vector3D v2 = new Vector3D(1.0f, 2.0f, 9.0f);
+        assertNotEquals("Разные Z", v1, v2);
+    }
+
+    @Test
+    public void testHashCodeWithZero() {
+        // Тест на hashCode с нулевыми компонентами
+        Vector3D v1 = new Vector3D(0.0f, 0.0f, 0.0f);
+        Vector3D v2 = new Vector3D(0.0f, 0.0f, 0.0f);
+
+        assertEquals("HashCode нулевых векторов", v1.hashCode(), v2.hashCode());
+    }
+
+    @Test
+    public void testHashCodeDifferentVectors() {
+        // Разные векторы должны иметь разные hashCode (обычно)
+        Vector3D v1 = new Vector3D(1.0f, 0.0f, 0.0f);
+        Vector3D v2 = new Vector3D(0.0f, 1.0f, 0.0f);
+        Vector3D v3 = new Vector3D(0.0f, 0.0f, 1.0f);
+
+        assertTrue("Разные hashCode",
+            v1.hashCode() != v2.hashCode() ||
+            v2.hashCode() != v3.hashCode() ||
+            v1.hashCode() != v3.hashCode());
+    }
+
+    @Test
+    public void testAddReturnsSelf() {
+        // add() возвращает this для цепочки
+        Vector3D v1 = new Vector3D(1.0f, 2.0f, 3.0f);
+        Vector3D v2 = new Vector3D(4.0f, 5.0f, 6.0f);
+
+        Vector3D result = v1.add(v2);
+        assertSame("add возвращает this", v1, result);
+    }
+
+    @Test
+    public void testSubReturnsSelf() {
+        // sub() возвращает this для цепочки
+        Vector3D v1 = new Vector3D(5.0f, 7.0f, 9.0f);
+        Vector3D v2 = new Vector3D(1.0f, 2.0f, 3.0f);
+
+        Vector3D result = v1.sub(v2);
+        assertSame("sub возвращает this", v1, result);
+    }
+
+    @Test
+    public void testScaleReturnsSelf() {
+        // scale() возвращает this для цепочки
+        Vector3D v = new Vector3D(1.0f, 2.0f, 3.0f);
+
+        Vector3D result = v.scale(2.0f);
+        assertSame("scale возвращает this", v, result);
+    }
+
+    @Test
+    public void testInverseReturnsSelf() {
+        // inverse() возвращает this для цепочки
+        Vector3D v = new Vector3D(1.0f, 2.0f, 3.0f);
+
+        Vector3D result = v.inverse();
+        assertSame("inverse возвращает this", v, result);
+    }
+
+    @Test
+    public void testCrossProductNewVector() {
+        // cross() возвращает новый вектор, не модифицирует исходный
+        Vector3D v1 = new Vector3D(1.0f, 0.0f, 0.0f);
+        Vector3D v2 = new Vector3D(0.0f, 1.0f, 0.0f);
+
+        Vector3D cross = v1.cross(v2);
+
+        // Исходные векторы не изменились
+        assertEquals("v1.x не изменился", 1.0f, v1.x, EPSILON);
+        assertEquals("v2.y не изменился", 1.0f, v2.y, EPSILON);
+
+        // Результат - новый вектор
+        assertNotSame("cross - новый вектор", v1, cross);
+        assertNotSame("cross - новый вектор", v2, cross);
+    }
+
+    @Test
+    public void testNormalizeUnitVector() {
+        // Нормализация единичного вектора не меняет его
+        Vector3D v = new Vector3D(1.0f, 0.0f, 0.0f);
+        v.normalize();
+
+        assertEquals("Единичный вектор не меняется", 1.0f, v.x, EPSILON);
+        assertEquals("Y = 0", 0.0f, v.y, EPSILON);
+        assertEquals("Z = 0", 0.0f, v.z, EPSILON);
+    }
+
+    @Test
+    public void testDistanceSymmetric() {
+        // Расстояние симметрично: d(a,b) = d(b,a)
+        Vector3D v1 = new Vector3D(1.0f, 2.0f, 3.0f);
+        Vector3D v2 = new Vector3D(4.0f, 5.0f, 6.0f);
+
+        float d1 = v1.distance(v2);
+        float d2 = v2.distance(v1);
+
+        assertEquals("Симметричное расстояние", d1, d2, EPSILON);
+    }
+
+    @Test
+    public void testDotProductCommutative() {
+        // Скалярное произведение коммутативно: a·b = b·a
+        Vector3D v1 = new Vector3D(1.0f, 2.0f, 3.0f);
+        Vector3D v2 = new Vector3D(4.0f, 5.0f, 6.0f);
+
+        float dot1 = v1.dot(v2);
+        float dot2 = v2.dot(v1);
+
+        assertEquals("Коммутативность dot", dot1, dot2, EPSILON);
+    }
 }

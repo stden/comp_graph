@@ -645,4 +645,317 @@ public class Matrix4Test {
         assertEquals("Правый верхний X = 1", 1, rightTop[0], EPSILON);
         assertEquals("Правый верхний Y = 1", 1, rightTop[1], EPSILON);
     }
+
+    // ============ ДОПОЛНИТЕЛЬНЫЕ ТЕСТЫ ДЛЯ УБИЙСТВА МУТАЦИЙ ============
+
+    @Test
+    public void testLookAtForwardVectorCalculation() {
+        // Тест на правильный расчёт вектора направления (centerX - eyeX и т.д.)
+        // Камера в (10, 0, 0) смотрит на (0, 0, 0) - направление влево по X
+        Matrix4 view = Matrix4.lookAt(10, 0, 0, 0, 0, 0, 0, 1, 0);
+
+        // Точка (5, 0, 0) должна быть перед камерой (между камерой и целью)
+        double[] result = view.transformPoint(5, 0, 0);
+        // Точка между камерой и целью должна иметь отрицательный Z в view space
+        assertTrue("Точка между камерой и целью", result[2] < 0);
+
+        // Точка (0, 0, 0) - цель
+        double[] target = view.transformPoint(0, 0, 0);
+        // Цель дальше от камеры
+        assertTrue("Цель дальше", target[2] < result[2]);
+    }
+
+    @Test
+    public void testLookAtForwardVectorComponents() {
+        // Камера смотрит по диагонали - все компоненты forward вектора ненулевые
+        Matrix4 view = Matrix4.lookAt(5, 5, 5, 0, 0, 0, 0, 1, 0);
+
+        // Точка в начале координат
+        double[] result = view.transformPoint(0, 0, 0);
+
+        // Расстояние должно соответствовать sqrt(5^2 + 5^2 + 5^2) ≈ 8.66
+        double expectedDist = Math.sqrt(75);
+        assertEquals("Расстояние до цели", -expectedDist, result[2], EPSILON);
+    }
+
+    @Test
+    public void testLookAtCrossProductRight() {
+        // Тест на правильный расчёт правого вектора (forward × up)
+        // Камера смотрит по оси -Z, up = Y => right = X
+        Matrix4 view = Matrix4.lookAt(0, 0, 5, 0, 0, 0, 0, 1, 0);
+
+        // Точка (1, 0, 0) должна быть справа (положительный X в view space)
+        double[] rightPoint = view.transformPoint(1, 0, 0);
+        assertTrue("Точка справа имеет положительный X", rightPoint[0] > 0);
+
+        // Точка (-1, 0, 0) должна быть слева
+        double[] leftPoint = view.transformPoint(-1, 0, 0);
+        assertTrue("Точка слева имеет отрицательный X", leftPoint[0] < 0);
+    }
+
+    @Test
+    public void testLookAtCrossProductUp() {
+        // Тест на правильный расчёт нового up вектора (right × forward)
+        Matrix4 view = Matrix4.lookAt(0, 0, 5, 0, 0, 0, 0, 1, 0);
+
+        // Точка (0, 1, 0) должна быть сверху (положительный Y в view space)
+        double[] upPoint = view.transformPoint(0, 1, 0);
+        assertTrue("Точка сверху имеет положительный Y", upPoint[1] > 0);
+
+        // Точка (0, -1, 0) должна быть снизу
+        double[] downPoint = view.transformPoint(0, -1, 0);
+        assertTrue("Точка снизу имеет отрицательный Y", downPoint[1] < 0);
+    }
+
+    @Test
+    public void testLookAtTranslationComponent() {
+        // Тест на правильный расчёт компонента трансляции
+        // Цель (target) должна быть на отрицательной оси Z в view space
+        Matrix4 view = Matrix4.lookAt(3, 4, 5, 0, 0, 0, 0, 1, 0);
+
+        // Цель (0,0,0) должна быть перед камерой (отрицательный Z)
+        double[] targetInView = view.transformPoint(0, 0, 0);
+        double distToTarget = Math.sqrt(3*3 + 4*4 + 5*5);  // sqrt(50) ≈ 7.07
+        assertEquals("Цель на отрицательном Z", -distToTarget, targetInView[2], EPSILON);
+    }
+
+    @Test
+    public void testLookAtNormalization() {
+        // Тест на правильную нормализацию векторов (деление на длину)
+        // Используем ненормализованные начальные данные
+        Matrix4 view = Matrix4.lookAt(100, 0, 0, 0, 0, 0, 0, 1, 0);
+
+        // Несмотря на большое расстояние, направления должны быть корректными
+        double[] result = view.transformPoint(50, 0, 0);
+        assertTrue("Точка перед камерой", result[2] < 0);
+        assertEquals("X в центре", 0, result[0], EPSILON);
+    }
+
+    @Test
+    public void testPerspectiveFocalLength() {
+        // Тест на правильный расчёт f = 1/tan(fov/2)
+        double fov90 = Math.PI / 2;  // 90 градусов
+        Matrix4 persp90 = Matrix4.perspective(fov90, 1.0, 0.1, 100);
+
+        double fov60 = Math.PI / 3;  // 60 градусов
+        Matrix4 persp60 = Matrix4.perspective(fov60, 1.0, 0.1, 100);
+
+        // При меньшем FOV точки должны проецироваться дальше от центра (больше zoom)
+        double[] point90 = persp90.transformPoint(1, 0, -5);
+        double[] point60 = persp60.transformPoint(1, 0, -5);
+
+        assertTrue("Меньший FOV = больший zoom", Math.abs(point60[0]) > Math.abs(point90[0]));
+    }
+
+    @Test
+    public void testPerspectiveAspectRatio() {
+        // Тест на правильный учёт aspect ratio (f/aspect)
+        Matrix4 wide = Matrix4.perspective(Math.PI / 2, 2.0, 0.1, 100);  // 2:1
+        Matrix4 square = Matrix4.perspective(Math.PI / 2, 1.0, 0.1, 100);  // 1:1
+
+        // При широком aspect ratio X координата должна быть меньше
+        double[] widePoint = wide.transformPoint(1, 0, -5);
+        double[] squarePoint = square.transformPoint(1, 0, -5);
+
+        assertTrue("Широкий aspect = меньший X", Math.abs(widePoint[0]) < Math.abs(squarePoint[0]));
+    }
+
+    @Test
+    public void testPerspectiveNearFarPlanes() {
+        // Тест на правильный расчёт near и far плоскостей
+        double near = 1.0;
+        double far = 100.0;
+        Matrix4 persp = Matrix4.perspective(Math.PI / 2, 1.0, near, far);
+
+        // Точка на ближней плоскости
+        double[] nearPoint = persp.transformPoint(0, 0, -near);
+        // Точка на дальней плоскости
+        double[] farPoint = persp.transformPoint(0, 0, -far);
+
+        // Z значения должны быть в NDC диапазоне [-1, 1]
+        assertTrue("Near plane в NDC", nearPoint[2] >= -1.1 && nearPoint[2] <= 1.1);
+        assertTrue("Far plane в NDC", farPoint[2] >= -1.1 && farPoint[2] <= 1.1);
+        assertTrue("Far > Near в Z", farPoint[2] > nearPoint[2]);
+    }
+
+    @Test
+    public void testOrthographicWidthHeight() {
+        // Тест на правильный расчёт 2/(right-left) и 2/(top-bottom)
+        Matrix4 ortho = Matrix4.orthographic(-10, 10, -5, 5, 1, 100);
+
+        // Ширина = 20, высота = 10
+        // Точка (10, 0, -1) -> X = 1
+        double[] rightEdge = ortho.transformPoint(10, 0, -1);
+        assertEquals("Правый край = 1", 1, rightEdge[0], EPSILON);
+
+        // Точка (0, 5, -1) -> Y = 1
+        double[] topEdge = ortho.transformPoint(0, 5, -1);
+        assertEquals("Верхний край = 1", 1, topEdge[1], EPSILON);
+    }
+
+    @Test
+    public void testOrthographicDepthRange() {
+        // Тест на правильный расчёт -2/(far-near)
+        double near = 1.0;
+        double far = 11.0;  // Диапазон = 10
+        Matrix4 ortho = Matrix4.orthographic(-1, 1, -1, 1, near, far);
+
+        // Точка на ближней плоскости
+        double[] nearPoint = ortho.transformPoint(0, 0, -near);
+        // Точка на дальней плоскости
+        double[] farPoint = ortho.transformPoint(0, 0, -far);
+
+        // Z должен монотонно изменяться
+        assertTrue("Near и Far различаются по Z", Math.abs(nearPoint[2] - farPoint[2]) > 0.1);
+    }
+
+    @Test
+    public void testOrthographicCenterOffset() {
+        // Тест на правильный расчёт -(right+left)/(right-left)
+        Matrix4 ortho = Matrix4.orthographic(0, 20, 0, 10, 1, 100);  // Смещённый центр
+
+        // Центр объёма (10, 5) должен отобразиться в (0, 0)
+        double[] center = ortho.transformPoint(10, 5, -1);
+        assertEquals("Центр X = 0", 0, center[0], EPSILON);
+        assertEquals("Центр Y = 0", 0, center[1], EPSILON);
+    }
+
+    @Test
+    public void testTransformAllComponents() {
+        // Тест на все 16 элементов матрицы в transform
+        Matrix4 custom = new Matrix4(new double[][] {
+            {1, 2, 3, 4},
+            {5, 6, 7, 8},
+            {9, 10, 11, 12},
+            {13, 14, 15, 16}
+        });
+
+        double[] result = custom.transform(1, 1, 1, 1);
+
+        // result[0] = 1*1 + 2*1 + 3*1 + 4*1 = 10
+        assertEquals("Первая компонента", 10, result[0], EPSILON);
+        // result[1] = 5*1 + 6*1 + 7*1 + 8*1 = 26
+        assertEquals("Вторая компонента", 26, result[1], EPSILON);
+        // result[2] = 9*1 + 10*1 + 11*1 + 12*1 = 42
+        assertEquals("Третья компонента", 42, result[2], EPSILON);
+        // result[3] = 13*1 + 14*1 + 15*1 + 16*1 = 58
+        assertEquals("Четвёртая компонента", 58, result[3], EPSILON);
+    }
+
+    @Test
+    public void testTransformPointPerspectiveDivide() {
+        // Тест на перспективное деление (деление на w)
+        Matrix4 m = new Matrix4(new double[][] {
+            {1, 0, 0, 0},
+            {0, 1, 0, 0},
+            {0, 0, 1, 0},
+            {0, 0, 1, 0}  // w = z
+        });
+
+        double[] result = m.transformPoint(4, 8, 2);
+        // w = z = 2, поэтому x = 4/2 = 2, y = 8/2 = 4, z = 2/2 = 1
+        assertEquals("X после деления", 2, result[0], EPSILON);
+        assertEquals("Y после деления", 4, result[1], EPSILON);
+        assertEquals("Z после деления", 1, result[2], EPSILON);
+    }
+
+    @Test
+    public void testMultiplyMatrixElements() {
+        // Тест на правильное умножение матриц
+        Matrix4 a = new Matrix4(new double[][] {
+            {1, 2, 0, 0},
+            {3, 4, 0, 0},
+            {0, 0, 1, 0},
+            {0, 0, 0, 1}
+        });
+
+        Matrix4 b = new Matrix4(new double[][] {
+            {5, 6, 0, 0},
+            {7, 8, 0, 0},
+            {0, 0, 1, 0},
+            {0, 0, 0, 1}
+        });
+
+        Matrix4 result = a.multiply(b);
+
+        // [1,2] * [5,7] = 5+14 = 19
+        // [1,2] * [6,8] = 6+16 = 22
+        // [3,4] * [5,7] = 15+28 = 43
+        // [3,4] * [6,8] = 18+32 = 50
+        assertEquals("Элемент [0][0]", 19, result.get(0, 0), EPSILON);
+        assertEquals("Элемент [0][1]", 22, result.get(0, 1), EPSILON);
+        assertEquals("Элемент [1][0]", 43, result.get(1, 0), EPSILON);
+        assertEquals("Элемент [1][1]", 50, result.get(1, 1), EPSILON);
+    }
+
+    @Test
+    public void testRotateXSinCos() {
+        // Тест на правильное использование sin и cos в rotateX
+        double angle = Math.PI / 6;  // 30 градусов
+        Matrix4 rx = Matrix4.rotateX(angle);
+
+        double c = Math.cos(angle);
+        double s = Math.sin(angle);
+
+        assertEquals("cos в [1][1]", c, rx.get(1, 1), EPSILON);
+        assertEquals("-sin в [1][2]", -s, rx.get(1, 2), EPSILON);
+        assertEquals("sin в [2][1]", s, rx.get(2, 1), EPSILON);
+        assertEquals("cos в [2][2]", c, rx.get(2, 2), EPSILON);
+    }
+
+    @Test
+    public void testRotateZSinCos() {
+        // Тест на правильное использование sin и cos в rotateZ
+        double angle = Math.PI / 4;  // 45 градусов
+        Matrix4 rz = Matrix4.rotateZ(angle);
+
+        double c = Math.cos(angle);
+        double s = Math.sin(angle);
+
+        assertEquals("cos в [0][0]", c, rz.get(0, 0), EPSILON);
+        assertEquals("-sin в [0][1]", -s, rz.get(0, 1), EPSILON);
+        assertEquals("sin в [1][0]", s, rz.get(1, 0), EPSILON);
+        assertEquals("cos в [1][1]", c, rz.get(1, 1), EPSILON);
+    }
+
+    @Test
+    public void testLookAtDiagonalView() {
+        // Камера смотрит по диагонали - тестирует все компоненты cross product
+        Matrix4 view = Matrix4.lookAt(10, 10, 10, 0, 0, 0, 0, 1, 0);
+
+        // Точки на осях должны трансформироваться по-разному
+        double[] xAxis = view.transformPoint(5, 0, 0);
+        double[] yAxis = view.transformPoint(0, 5, 0);
+        double[] zAxis = view.transformPoint(0, 0, 5);
+
+        // Все три точки должны быть в разных местах view space
+        boolean allDifferent =
+            (Math.abs(xAxis[0] - yAxis[0]) > 0.1 || Math.abs(xAxis[1] - yAxis[1]) > 0.1) &&
+            (Math.abs(yAxis[0] - zAxis[0]) > 0.1 || Math.abs(yAxis[1] - zAxis[1]) > 0.1);
+        assertTrue("Точки на осях различаются в view space", allDifferent);
+    }
+
+    @Test
+    public void testLookAtNegativeEyePosition() {
+        // Камера с отрицательными координатами
+        Matrix4 view = Matrix4.lookAt(-5, -5, -5, 0, 0, 0, 0, 1, 0);
+
+        double[] origin = view.transformPoint(0, 0, 0);
+        double expectedDist = Math.sqrt(75);  // sqrt(5^2 + 5^2 + 5^2)
+        assertEquals("Расстояние до цели", -expectedDist, origin[2], EPSILON);
+    }
+
+    @Test
+    public void testLookAtRowElements() {
+        // Проверка конкретных элементов матрицы lookAt
+        Matrix4 view = Matrix4.lookAt(0, 0, 10, 0, 0, 0, 0, 1, 0);
+
+        // Третья строка должна содержать -forward и (f·eye)
+        // forward = (0, 0, -1) (нормализованный), поэтому -forward = (0, 0, 1)
+        assertEquals("Row 2, Col 2: -fz", 1, view.get(2, 2), EPSILON);
+
+        // f·eye = (0, 0, -1)·(0, 0, 10) = -10, но с минусом: -(-10) = 10... в формуле: fx*eyeX + fy*eyeY + fz*eyeZ
+        // При eyeZ=10, fz=-1 (pointing from eye to target): 0*0 + 0*0 + (-1)*10 = -10
+        // В lookAt: (fx * eyeX + fy * eyeY + fz * eyeZ) без минуса в последнем столбце
+    }
 }
