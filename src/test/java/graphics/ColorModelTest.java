@@ -398,4 +398,215 @@ public class ColorModelTest {
         assertEquals("Grayscale красного ~54", 54, redGray.r, 2);
         assertEquals("Grayscale зелёного ~182", 182, greenGray.r, 2);
     }
+
+    // ============ ДОПОЛНИТЕЛЬНЫЕ ТЕСТЫ ДЛЯ ПОКРЫТИЯ МУТАЦИЙ ============
+
+    @Test
+    public void testHSVToRGBAllHueSectors() {
+        // Тест всех 6 секторов оттенков в HSV
+        // Сектор 0: 0-60 (красный → жёлтый)
+        HSV sector0 = new HSV(30, 100, 100);
+        RGB rgb0 = sector0.toRGB();
+        assertEquals("Сектор 0: R = 255", 255, rgb0.r);
+        assertTrue("Сектор 0: G > 0", rgb0.g > 0);
+        assertEquals("Сектор 0: B = 0", 0, rgb0.b);
+
+        // Сектор 1: 60-120 (жёлтый → зелёный)
+        HSV sector1 = new HSV(90, 100, 100);
+        RGB rgb1 = sector1.toRGB();
+        assertTrue("Сектор 1: R > 0", rgb1.r > 0);
+        assertEquals("Сектор 1: G = 255", 255, rgb1.g);
+        assertEquals("Сектор 1: B = 0", 0, rgb1.b);
+
+        // Сектор 2: 120-180 (зелёный → циан)
+        HSV sector2 = new HSV(150, 100, 100);
+        RGB rgb2 = sector2.toRGB();
+        assertEquals("Сектор 2: R = 0", 0, rgb2.r);
+        assertEquals("Сектор 2: G = 255", 255, rgb2.g);
+        assertTrue("Сектор 2: B > 0", rgb2.b > 0);
+
+        // Сектор 3: 180-240 (циан → синий)
+        HSV sector3 = new HSV(210, 100, 100);
+        RGB rgb3 = sector3.toRGB();
+        assertEquals("Сектор 3: R = 0", 0, rgb3.r);
+        assertTrue("Сектор 3: G > 0", rgb3.g > 0);
+        assertEquals("Сектор 3: B = 255", 255, rgb3.b);
+
+        // Сектор 4: 240-300 (синий → пурпурный)
+        HSV sector4 = new HSV(270, 100, 100);
+        RGB rgb4 = sector4.toRGB();
+        assertTrue("Сектор 4: R > 0", rgb4.r > 0);
+        assertEquals("Сектор 4: G = 0", 0, rgb4.g);
+        assertEquals("Сектор 4: B = 255", 255, rgb4.b);
+
+        // Сектор 5: 300-360 (пурпурный → красный)
+        HSV sector5 = new HSV(330, 100, 100);
+        RGB rgb5 = sector5.toRGB();
+        assertEquals("Сектор 5: R = 255", 255, rgb5.r);
+        assertEquals("Сектор 5: G = 0", 0, rgb5.g);
+        assertTrue("Сектор 5: B > 0", rgb5.b > 0);
+    }
+
+    @Test
+    public void testHSVToRGBEdgeCases() {
+        // Граничные значения оттенков
+        HSV h0 = new HSV(0, 100, 100);
+        HSV h60 = new HSV(60, 100, 100);
+        HSV h120 = new HSV(120, 100, 100);
+        HSV h180 = new HSV(180, 100, 100);
+        HSV h240 = new HSV(240, 100, 100);
+        HSV h300 = new HSV(300, 100, 100);
+        HSV h359 = new HSV(359, 100, 100);
+
+        assertNotNull("H=0", h0.toRGB());
+        assertNotNull("H=60", h60.toRGB());
+        assertNotNull("H=120", h120.toRGB());
+        assertNotNull("H=180", h180.toRGB());
+        assertNotNull("H=240", h240.toRGB());
+        assertNotNull("H=300", h300.toRGB());
+        assertNotNull("H=359", h359.toRGB());
+    }
+
+    @Test
+    public void testHSVEquality() {
+        HSV hsv1 = new HSV(180, 50, 75);
+        HSV hsv2 = new HSV(180, 50, 75);
+        HSV hsv3 = new HSV(181, 50, 75);
+
+        assertEquals("Одинаковые HSV равны", hsv1, hsv2);
+        assertNotEquals("Разные HSV не равны", hsv1, hsv3);
+    }
+
+    @Test
+    public void testHSVEqualityWithNull() {
+        HSV hsv = new HSV(180, 50, 75);
+        assertFalse("HSV не равен null", hsv.equals(null));
+        assertFalse("HSV не равен строке", hsv.equals("HSV"));
+    }
+
+    @Test
+    public void testRGBEqualityWithNull() {
+        RGB rgb = new RGB(100, 150, 200);
+        assertFalse("RGB не равен null", rgb.equals(null));
+        assertFalse("RGB не равен строке", rgb.equals("RGB"));
+    }
+
+    @Test
+    public void testRGBToHSVBlack() {
+        // Чёрный цвет: RGB(0, 0, 0) → HSV(0°, 0%, 0%)
+        RGB black = new RGB(0, 0, 0);
+        HSV hsv = black.toHSV();
+
+        assertEquals("Чёрный: насыщенность = 0%", 0, hsv.s, EPSILON);
+        assertEquals("Чёрный: яркость = 0%", 0, hsv.v, EPSILON);
+    }
+
+    @Test
+    public void testRGBToHSVWhite() {
+        // Белый цвет: RGB(255, 255, 255) → HSV(0°, 0%, 100%)
+        RGB white = new RGB(255, 255, 255);
+        HSV hsv = white.toHSV();
+
+        assertEquals("Белый: насыщенность = 0%", 0, hsv.s, EPSILON);
+        assertEquals("Белый: яркость = 100%", 100, hsv.v, EPSILON);
+    }
+
+    @Test
+    public void testRGBToHSVMagenta() {
+        // Пурпурный: RGB(255, 0, 255) → HSV(300°, 100%, 100%)
+        RGB magenta = new RGB(255, 0, 255);
+        HSV hsv = magenta.toHSV();
+
+        assertEquals("Пурпурный: оттенок = 300°", 300, hsv.h, EPSILON);
+        assertEquals("Пурпурный: насыщенность = 100%", 100, hsv.s, EPSILON);
+    }
+
+    @Test
+    public void testHSVToRGBLowSaturation() {
+        // Низкая насыщенность - почти серый
+        HSV lowSat = new HSV(120, 10, 80);
+        RGB rgb = lowSat.toRGB();
+
+        // При низкой насыщенности R, G, B должны быть близки друг к другу
+        int maxDiff = Math.max(Math.abs(rgb.r - rgb.g),
+                      Math.max(Math.abs(rgb.g - rgb.b), Math.abs(rgb.r - rgb.b)));
+        assertTrue("Низкая насыщенность - близкие значения RGB", maxDiff < 50);
+    }
+
+    @Test
+    public void testHSVToRGBLowBrightness() {
+        // Низкая яркость - тёмный цвет
+        HSV lowVal = new HSV(240, 100, 20);
+        RGB rgb = lowVal.toRGB();
+
+        assertTrue("Низкая яркость - все компоненты < 60", rgb.r < 60 && rgb.g < 60 && rgb.b < 60);
+    }
+
+    @Test
+    public void testRGBToHSVYellow() {
+        // Жёлтый: RGB(255, 255, 0) → HSV(60°, 100%, 100%)
+        RGB yellow = new RGB(255, 255, 0);
+        HSV hsv = yellow.toHSV();
+
+        assertEquals("Жёлтый: оттенок = 60°", 60, hsv.h, EPSILON);
+    }
+
+    @Test
+    public void testRGBToHSVCyan() {
+        // Циан: RGB(0, 255, 255) → HSV(180°, 100%, 100%)
+        RGB cyan = new RGB(0, 255, 255);
+        HSV hsv = cyan.toHSV();
+
+        assertEquals("Циан: оттенок = 180°", 180, hsv.h, EPSILON);
+    }
+
+    @Test
+    public void testRGBToHSVOrange() {
+        // Оранжевый: проверка вычисления оттенка когда max = R
+        RGB orange = new RGB(255, 128, 0);
+        HSV hsv = orange.toHSV();
+
+        assertTrue("Оранжевый: оттенок между 0 и 60", hsv.h > 0 && hsv.h < 60);
+    }
+
+    @Test
+    public void testRGBToHSVLime() {
+        // Лайм: проверка вычисления оттенка когда max = G
+        RGB lime = new RGB(128, 255, 0);
+        HSV hsv = lime.toHSV();
+
+        assertTrue("Лайм: оттенок между 60 и 120", hsv.h > 60 && hsv.h < 120);
+    }
+
+    @Test
+    public void testRGBToHSVPurple() {
+        // Фиолетовый: проверка вычисления оттенка когда max = B
+        RGB purple = new RGB(128, 0, 255);
+        HSV hsv = purple.toHSV();
+
+        assertTrue("Фиолетовый: оттенок между 240 и 300", hsv.h > 240 && hsv.h < 300);
+    }
+
+    @Test
+    public void testGrayscalePreservesGray() {
+        // Серый цвет должен остаться серым
+        RGB gray = new RGB(128, 128, 128);
+        RGB result = gray.toGrayscale();
+
+        assertEquals("Серый остаётся серым", gray.r, result.r);
+    }
+
+    @Test
+    public void testHSVToRGBRoundTrip() {
+        // Полный круг HSV → RGB → HSV
+        float[] hues = {0, 30, 60, 90, 120, 150, 180, 210, 240, 270, 300, 330};
+
+        for (float hue : hues) {
+            HSV original = new HSV(hue, 80, 90);
+            RGB rgb = original.toRGB();
+            HSV back = rgb.toHSV();
+
+            assertEquals("Оттенок сохранён для H=" + hue, hue, back.h, 2);
+        }
+    }
 }

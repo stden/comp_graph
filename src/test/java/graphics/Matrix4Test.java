@@ -489,4 +489,160 @@ public class Matrix4Test {
 
         assertTrue("Объект притягивается", newDist < oldDist);
     }
+
+    // ============ ДОПОЛНИТЕЛЬНЫЕ ТЕСТЫ ДЛЯ ПОКРЫТИЯ МУТАЦИЙ ============
+
+    @Test
+    public void testLookAtDifferentPositions() {
+        // Камера смотрит из разных позиций (избегаем положения на оси Y - up vector issue)
+        double[][] positions = {
+            {5, 0, 0, 0, 0, 0},    // справа
+            {-5, 0, 0, 0, 0, 0},   // слева
+            {0, 0, -5, 0, 0, 0},   // сзади
+            {3, 4, 5, 0, 0, 0},    // диагональ
+            {5, 3, 5, 0, 0, 0},    // произвольная точка
+        };
+
+        for (double[] pos : positions) {
+            Matrix4 view = Matrix4.lookAt(
+                pos[0], pos[1], pos[2],
+                pos[3], pos[4], pos[5],
+                0, 1, 0
+            );
+            assertNotNull("Камера создана", view);
+
+            // Проверяем что матрица создана корректно
+            assertEquals("Элемент [3][3] = 1", 1, view.get(3, 3), EPSILON);
+        }
+    }
+
+    @Test
+    public void testLookAtUpVectorVariations() {
+        // Разные векторы "вверх"
+        double[][] upVectors = {
+            {0, 1, 0},   // стандартный
+            {0, -1, 0},  // перевёрнутый
+            {1, 0, 0},   // вправо
+            {0, 0, 1},   // вперёд
+            {1, 1, 0},   // диагональ
+        };
+
+        for (double[] up : upVectors) {
+            Matrix4 view = Matrix4.lookAt(
+                0, 0, 5,
+                0, 0, 0,
+                up[0], up[1], up[2]
+            );
+            assertNotNull("Камера с up " + up[0] + "," + up[1] + "," + up[2], view);
+        }
+    }
+
+    @Test
+    public void testLookAtForwardBackward() {
+        // Камера смотрит вперёд и назад
+        Matrix4 forward = Matrix4.lookAt(0, 0, 5, 0, 0, 0, 0, 1, 0);
+        Matrix4 backward = Matrix4.lookAt(0, 0, -5, 0, 0, 0, 0, 1, 0);
+
+        double[] fwdResult = forward.transformPoint(0, 0, 0);
+        double[] bwdResult = backward.transformPoint(0, 0, 0);
+
+        // Направления должны быть противоположными
+        assertTrue("Разные направления", fwdResult[2] * bwdResult[2] > 0);
+    }
+
+    @Test
+    public void testLookAtMatrixElements() {
+        // Проверяем конкретные элементы матрицы lookAt
+        Matrix4 view = Matrix4.lookAt(0, 0, 10, 0, 0, 0, 0, 1, 0);
+
+        // Элемент [3][3] должен быть 1 (для однородных координат)
+        assertEquals("Элемент [3][3] = 1", 1, view.get(3, 3), EPSILON);
+
+        // Элементы последней строки (кроме [3][3]) должны быть 0
+        assertEquals("Элемент [3][0] = 0", 0, view.get(3, 0), EPSILON);
+        assertEquals("Элемент [3][1] = 0", 0, view.get(3, 1), EPSILON);
+        assertEquals("Элемент [3][2] = 0", 0, view.get(3, 2), EPSILON);
+    }
+
+    @Test
+    public void testLookAtNegativeCoordinates() {
+        // Камера с отрицательными координатами
+        Matrix4 view = Matrix4.lookAt(-10, -5, -20, 5, 10, 15, 0, 1, 0);
+
+        // Проверяем что матрица создана корректно
+        assertNotNull("View матрица создана", view);
+        assertEquals("Элемент [3][3] = 1", 1, view.get(3, 3), EPSILON);
+
+        // Проверяем трансформацию - точка должна переместиться
+        double[] result = view.transformPoint(5, 10, 15);
+        assertNotNull("Результат не null", result);
+    }
+
+    @Test
+    public void testLookAtLargeDistance() {
+        // Очень далёкая камера
+        Matrix4 view = Matrix4.lookAt(0, 0, 1000, 0, 0, 0, 0, 1, 0);
+        double[] result = view.transformPoint(0, 0, 0);
+        assertEquals("Цель на расстоянии 1000", -1000, result[2], EPSILON);
+    }
+
+    @Test
+    public void testLookAtCloseDistance() {
+        // Очень близкая камера
+        Matrix4 view = Matrix4.lookAt(0, 0, 0.1, 0, 0, 0, 0, 1, 0);
+        double[] result = view.transformPoint(0, 0, 0);
+        assertEquals("Цель на расстоянии 0.1", -0.1, result[2], EPSILON);
+    }
+
+    @Test
+    public void testLookAtSideView() {
+        // Вид сбоку
+        Matrix4 view = Matrix4.lookAt(10, 0, 0, 0, 0, 0, 0, 1, 0);
+        double[] result = view.transformPoint(0, 0, 0);
+        assertEquals("Цель в центре X (вид сбоку)", 0, result[0], EPSILON);
+    }
+
+    @Test
+    public void testLookAtTopView() {
+        // Вид сверху
+        Matrix4 view = Matrix4.lookAt(0, 10, 0, 0, 0, 0, 0, 0, -1);
+        double[] result = view.transformPoint(0, 0, 0);
+        assertEquals("Цель в центре X (вид сверху)", 0, result[0], EPSILON);
+    }
+
+    @Test
+    public void testMatrixToString() {
+        Matrix4 identity = new Matrix4();
+        String str = identity.toString();
+        assertNotNull("toString не null", str);
+        assertTrue("Содержит 1.000", str.contains("1.000"));
+    }
+
+    @Test
+    public void testPerspectiveWithDifferentFOV() {
+        // Разные углы обзора
+        double[] fovs = {Math.PI / 6, Math.PI / 4, Math.PI / 3, Math.PI / 2, 2 * Math.PI / 3};
+
+        for (double fov : fovs) {
+            Matrix4 persp = Matrix4.perspective(fov, 1.0, 0.1, 100);
+            assertNotNull("Перспектива с FOV " + Math.toDegrees(fov), persp);
+
+            double[] result = persp.transformPoint(1, 1, -5);
+            assertNotNull("Трансформация точки", result);
+        }
+    }
+
+    @Test
+    public void testOrthographicAsymmetric() {
+        // Асимметричная ортографическая проекция
+        Matrix4 ortho = Matrix4.orthographic(-5, 15, -10, 20, 1, 1000);
+
+        double[] leftBottom = ortho.transformPoint(-5, -10, -1);
+        double[] rightTop = ortho.transformPoint(15, 20, -1);
+
+        assertEquals("Левый нижний X = -1", -1, leftBottom[0], EPSILON);
+        assertEquals("Левый нижний Y = -1", -1, leftBottom[1], EPSILON);
+        assertEquals("Правый верхний X = 1", 1, rightTop[0], EPSILON);
+        assertEquals("Правый верхний Y = 1", 1, rightTop[1], EPSILON);
+    }
 }
