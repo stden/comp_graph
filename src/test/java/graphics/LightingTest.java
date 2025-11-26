@@ -247,4 +247,187 @@ public class LightingTest {
 
         assertTrue("Интенсивность ≤ 1.0", intensity <= 1.0f);
     }
+
+    // ============ ДОПОЛНИТЕЛЬНЫЕ ТЕСТЫ ДЛЯ МУТАЦИОННОГО ПОКРЫТИЯ ============
+
+    @Test
+    public void testLambertVariousAngles() {
+        Vector3D normal = new Vector3D(0, 1, 0);
+
+        // 0° - максимум
+        Vector3D light0 = new Vector3D(0, 1, 0);
+        assertEquals("0°: макс", 1.0f, Lighting.lambert(normal, light0, 1.0f, 1.0f), EPSILON);
+
+        // 90° - ноль
+        Vector3D light90 = new Vector3D(1, 0, 0);
+        assertEquals("90°: ноль", 0.0f, Lighting.lambert(normal, light90, 1.0f, 1.0f), EPSILON);
+
+        // 60° - половина
+        Vector3D light60 = new Vector3D(0, 0.5f, 0.866f);
+        light60.normalize();
+        float intensity60 = Lighting.lambert(normal, light60, 1.0f, 1.0f);
+        assertTrue("60°: половина", intensity60 > 0.4f && intensity60 < 0.6f);
+    }
+
+    @Test
+    public void testPhongSpecularHighlightPosition() {
+        // Зеркальное отражение зависит от позиции наблюдателя
+        Vector3D surfacePoint = new Vector3D(0, 0, 0);
+        Vector3D normal = new Vector3D(0, 1, 0);
+        Light light = new Light(new Vector3D(1, 10, 0), 1.0f);
+        Material material = Material.metal();
+
+        // Наблюдатель на линии отражения
+        Vector3D viewDirGood = new Vector3D(-1, 10, 0);
+        viewDirGood.normalize();
+        float intensityGood = Lighting.phong(surfacePoint, normal, viewDirGood, light, material, 0.0f);
+
+        // Наблюдатель в стороне
+        Vector3D viewDirBad = new Vector3D(10, 1, 0);
+        viewDirBad.normalize();
+        float intensityBad = Lighting.phong(surfacePoint, normal, viewDirBad, light, material, 0.0f);
+
+        assertTrue("Отражение видно с правильной позиции", intensityGood > intensityBad);
+    }
+
+    @Test
+    public void testPhongDifferentShininess() {
+        Vector3D surfacePoint = new Vector3D(0, 0, 0);
+        Vector3D normal = new Vector3D(0, 1, 0);
+        Vector3D viewDir = new Vector3D(0.1f, 1, 0);
+        viewDir.normalize();
+
+        Light light = new Light(new Vector3D(-0.1f, 10, 0), 1.0f);
+
+        // Низкий блеск - широкое пятно
+        Material lowShine = new Material(0, 0.5f, 0.5f, 1.0f);
+        float lowIntensity = Lighting.phong(surfacePoint, normal, viewDir, light, lowShine, 0.0f);
+
+        // Высокий блеск - узкое пятно
+        Material highShine = new Material(0, 0.5f, 0.5f, 128.0f);
+        float highIntensity = Lighting.phong(surfacePoint, normal, viewDir, light, highShine, 0.0f);
+
+        assertNotEquals("Разные степени блеска", lowIntensity, highIntensity, 0.01f);
+    }
+
+    @Test
+    public void testBlinnPhongNoSpecularFromBack() {
+        Vector3D surfacePoint = new Vector3D(0, 0, 0);
+        Vector3D normal = new Vector3D(0, 1, 0);
+        Vector3D viewDir = new Vector3D(0, 1, 0);
+
+        // Свет снизу
+        Light light = new Light(new Vector3D(0, -10, 0), 1.0f);
+        Material material = Material.metal();
+
+        float intensity = Lighting.blinnPhong(surfacePoint, normal, viewDir, light, material, 0.1f);
+
+        // Только фоновое освещение
+        assertTrue("Только ambient от света сзади", intensity < 0.15f);
+    }
+
+    @Test
+    public void testBlinnPhongHalfwayVector() {
+        // Блинн-Фонг использует halfway вектор
+        Vector3D surfacePoint = new Vector3D(0, 0, 0);
+        Vector3D normal = new Vector3D(0, 1, 0);
+        Vector3D viewDir = new Vector3D(0, 1, 0);
+
+        Light light = new Light(new Vector3D(0, 10, 0), 1.0f);
+        Material material = Material.metal();
+
+        float intensity = Lighting.blinnPhong(surfacePoint, normal, viewDir, light, material, 0.0f);
+
+        assertTrue("Яркое зеркальное отражение", intensity > 0.7f);
+    }
+
+    @Test
+    public void testMaterialCustomValues() {
+        Material custom = new Material(0.3f, 0.4f, 0.5f, 64.0f);
+
+        assertEquals("Ambient", 0.3f, custom.ambient, EPSILON);
+        assertEquals("Diffuse", 0.4f, custom.diffuse, EPSILON);
+        assertEquals("Specular", 0.5f, custom.specular, EPSILON);
+        assertEquals("Shininess", 64.0f, custom.shininess, EPSILON);
+    }
+
+    @Test
+    public void testAttenuationLinear() {
+        // Только линейное затухание
+        float atten1 = Lighting.attenuation(1, 1.0f, 1.0f, 0.0f);
+        float atten2 = Lighting.attenuation(2, 1.0f, 1.0f, 0.0f);
+
+        // 1/(1 + 1*1) = 0.5
+        assertEquals("Затухание на d=1", 0.5f, atten1, EPSILON);
+        // 1/(1 + 1*2) = 0.333
+        assertEquals("Затухание на d=2", 0.333f, atten2, 0.01f);
+    }
+
+    @Test
+    public void testAttenuationConstant() {
+        // Только константное затухание
+        float atten = Lighting.attenuation(100, 2.0f, 0.0f, 0.0f);
+
+        // 1/2 = 0.5 (расстояние не влияет)
+        assertEquals("Константное затухание", 0.5f, atten, EPSILON);
+    }
+
+    @Test
+    public void testLightIntensityEffect() {
+        Vector3D normal = new Vector3D(0, 1, 0);
+        Vector3D lightDir = new Vector3D(0, 1, 0);
+
+        float low = Lighting.lambert(normal, lightDir, 0.5f, 1.0f);
+        float high = Lighting.lambert(normal, lightDir, 1.0f, 1.0f);
+
+        assertEquals("Интенсивность 0.5", 0.5f, low, EPSILON);
+        assertEquals("Интенсивность 1.0", 1.0f, high, EPSILON);
+    }
+
+    @Test
+    public void testPhongLightDirection() {
+        // Проверка нормализации направления света
+        Vector3D surfacePoint = new Vector3D(0, 0, 0);
+        Vector3D normal = new Vector3D(0, 1, 0);
+        Vector3D viewDir = new Vector3D(0, 1, 0);
+
+        // Свет на разных расстояниях должен давать похожий результат
+        Light lightNear = new Light(new Vector3D(0, 5, 0), 1.0f);
+        Light lightFar = new Light(new Vector3D(0, 100, 0), 1.0f);
+
+        Material material = Material.matte();
+
+        float intensityNear = Lighting.phong(surfacePoint, normal, viewDir, lightNear, material, 0.0f);
+        float intensityFar = Lighting.phong(surfacePoint, normal, viewDir, lightFar, material, 0.0f);
+
+        // Направление одинаковое, результат близкий
+        assertEquals("Направление нормализовано", intensityNear, intensityFar, 0.1f);
+    }
+
+    @Test
+    public void testBlinnPhongClampToOne() {
+        Vector3D surfacePoint = new Vector3D(0, 0, 0);
+        Vector3D normal = new Vector3D(0, 1, 0);
+        Vector3D viewDir = new Vector3D(0, 1, 0);
+
+        Light light = new Light(new Vector3D(0, 1, 0), 100.0f);
+        Material material = new Material(1.0f, 1.0f, 1.0f, 1.0f);
+
+        float intensity = Lighting.blinnPhong(surfacePoint, normal, viewDir, light, material, 10.0f);
+
+        assertTrue("Интенсивность ≤ 1.0", intensity <= 1.0f);
+    }
+
+    @Test
+    public void testLightPositionCopy() {
+        // Проверка что позиция копируется
+        Vector3D pos = new Vector3D(10, 20, 30);
+        Light light = new Light(pos, 1.0f);
+
+        // Изменяем исходную позицию
+        pos.x = 999;
+
+        // Позиция света не должна измениться
+        assertEquals("Позиция скопирована", 10, light.position.x, EPSILON);
+    }
 }

@@ -526,4 +526,144 @@ public class Transform2DTest {
         assertFalse("Направление != движение",
                     Math.abs(forward[0] - drift[0]) < EPSILON);
     }
+
+    // ============ ДОПОЛНИТЕЛЬНЫЕ ТЕСТЫ ДЛЯ МУТАЦИОННОГО ПОКРЫТИЯ ============
+
+    @Test
+    public void testTransformMatrixElements() {
+        // Проверка элементов матрицы для масштаба
+        Transform2D s = Transform2D.scale(3, 5);
+
+        assertEquals("[0][0] = sx", 3, s.get(0, 0), EPSILON);
+        assertEquals("[1][1] = sy", 5, s.get(1, 1), EPSILON);
+        assertEquals("[0][1] = 0", 0, s.get(0, 1), EPSILON);
+        assertEquals("[1][0] = 0", 0, s.get(1, 0), EPSILON);
+    }
+
+    @Test
+    public void testRotateMatrixElements() {
+        // Проверка элементов матрицы вращения
+        double angle = Math.PI / 6; // 30 градусов
+        Transform2D r = Transform2D.rotate(angle);
+
+        double cos = Math.cos(angle);
+        double sin = Math.sin(angle);
+
+        assertEquals("[0][0] = cos", cos, r.get(0, 0), EPSILON);
+        assertEquals("[0][1] = -sin", -sin, r.get(0, 1), EPSILON);
+        assertEquals("[1][0] = sin", sin, r.get(1, 0), EPSILON);
+        assertEquals("[1][1] = cos", cos, r.get(1, 1), EPSILON);
+    }
+
+    @Test
+    public void testTranslateMatrixElements() {
+        // Проверка элементов матрицы трансляции
+        Transform2D t = Transform2D.translate(7, 11);
+
+        assertEquals("[0][2] = dx", 7, t.get(0, 2), EPSILON);
+        assertEquals("[1][2] = dy", 11, t.get(1, 2), EPSILON);
+        assertEquals("[2][2] = 1", 1, t.get(2, 2), EPSILON);
+    }
+
+    @Test
+    public void testTransformHomogeneousCoordinates() {
+        // Тест однородных координат (w != 1)
+        double[][] m = {
+            {2, 0, 0},
+            {0, 2, 0},
+            {0, 0, 2}  // w будет умножено на 2
+        };
+        Transform2D t = new Transform2D(m);
+
+        double[] result = t.transform(10, 20);
+
+        // x_new = 2*10 = 20, y_new = 2*20 = 40, w = 2
+        // result = (20/2, 40/2) = (10, 20)
+        assertEquals("X нормализован", 10, result[0], EPSILON);
+        assertEquals("Y нормализован", 20, result[1], EPSILON);
+    }
+
+    @Test
+    public void testTransformToString() {
+        Transform2D t = Transform2D.translate(5, 10);
+        String str = t.toString();
+
+        assertNotNull("toString не null", str);
+        assertTrue("Содержит матричные элементы", str.contains("|"));
+    }
+
+    @Test
+    public void testRotateAroundComposition() {
+        // Проверка что rotateAround правильно комбинирует трансформации
+        double cx = 10, cy = 10;
+        Transform2D r = Transform2D.rotateAround(cx, cy, Math.PI);
+
+        // Точка (12, 10) должна перейти в (8, 10) при повороте на 180° вокруг (10,10)
+        double[] result = r.transform(12, 10);
+
+        assertEquals("X после поворота на 180°", 8, result[0], EPSILON);
+        assertEquals("Y после поворота на 180°", 10, result[1], EPSILON);
+    }
+
+    @Test
+    public void testScaleNegative() {
+        // Отрицательное масштабирование (отражение)
+        Transform2D s = Transform2D.scale(-1, -1);
+        double[] result = s.transform(5, 10);
+
+        assertEquals("X отражён", -5, result[0], EPSILON);
+        assertEquals("Y отражён", -10, result[1], EPSILON);
+    }
+
+    @Test
+    public void testScaleZero() {
+        // Масштабирование в 0 (схлопывание)
+        Transform2D s = Transform2D.scale(0, 0);
+        double[] result = s.transform(100, 200);
+
+        assertEquals("X схлопнулся в 0", 0, result[0], EPSILON);
+        assertEquals("Y схлопнулся в 0", 0, result[1], EPSILON);
+    }
+
+    @Test
+    public void testMultipleRotations() {
+        // Несколько последовательных поворотов
+        Transform2D r1 = Transform2D.rotate(Math.PI / 4);
+        Transform2D r2 = Transform2D.rotate(Math.PI / 4);
+
+        Transform2D combined = r1.multiply(r2);
+        double[] result = combined.transform(1, 0);
+
+        // 45° + 45° = 90°, так что (1,0) → (0, 1)
+        assertEquals("X после 90°", 0, result[0], EPSILON);
+        assertEquals("Y после 90°", 1, result[1], EPSILON);
+    }
+
+    @Test
+    public void testTransformOrigin() {
+        // Трансформация начала координат
+        Transform2D t = Transform2D.translate(100, 200);
+        double[] result = t.transform(0, 0);
+
+        assertEquals("Начало сдвинулось по X", 100, result[0], EPSILON);
+        assertEquals("Начало сдвинулось по Y", 200, result[1], EPSILON);
+    }
+
+    @Test
+    public void testMatrixArrayCopy() {
+        // Проверка что матрица копируется, а не используется по ссылке
+        double[][] m = {
+            {1, 0, 5},
+            {0, 1, 10},
+            {0, 0, 1}
+        };
+        Transform2D t = new Transform2D(m);
+
+        // Изменяем исходный массив
+        m[0][2] = 999;
+
+        // Трансформация не должна измениться
+        double[] result = t.transform(0, 0);
+        assertEquals("Матрица скопирована", 5, result[0], EPSILON);
+    }
 }

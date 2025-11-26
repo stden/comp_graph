@@ -513,4 +513,249 @@ public class BresenhamTest {
         assertTrue("Сторона 2 заканчивается в вершине 3", side2.contains(p3));
         assertTrue("Сторона 3 заканчивается в вершине 1", side3.contains(p1));
     }
+
+    // ============ ДОПОЛНИТЕЛЬНЫЕ ТЕСТЫ ДЛЯ МУТАЦИОННОГО ПОКРЫТИЯ ============
+
+    @Test
+    public void testLineSteepSlope() {
+        // Линия с крутым наклоном (dy > dx)
+        List<Point> points = Bresenham.line(0, 0, 2, 5);
+
+        assertEquals("Начало", new Point(0, 0), points.get(0));
+        assertEquals("Конец", new Point(2, 5), points.get(points.size() - 1));
+        assertTrue("Много точек по Y", points.size() >= 6);
+    }
+
+    @Test
+    public void testLineNegativeX() {
+        // Линия в направлении отрицательного X
+        List<Point> points = Bresenham.line(5, 0, 0, 0);
+
+        assertEquals("Начало (5,0)", new Point(5, 0), points.get(0));
+        assertEquals("Конец (0,0)", new Point(0, 0), points.get(points.size() - 1));
+
+        // X должен уменьшаться
+        for (int i = 1; i < points.size(); i++) {
+            assertTrue("X уменьшается", points.get(i).x <= points.get(i-1).x);
+        }
+    }
+
+    @Test
+    public void testLineNegativeY() {
+        // Линия в направлении отрицательного Y
+        List<Point> points = Bresenham.line(0, 5, 0, 0);
+
+        assertEquals("Начало (0,5)", new Point(0, 5), points.get(0));
+        assertEquals("Конец (0,0)", new Point(0, 0), points.get(points.size() - 1));
+
+        // Y должен уменьшаться
+        for (int i = 1; i < points.size(); i++) {
+            assertTrue("Y уменьшается", points.get(i).y <= points.get(i-1).y);
+        }
+    }
+
+    @Test
+    public void testLineNegativeXAndY() {
+        // Линия в направлении отрицательных X и Y
+        List<Point> points = Bresenham.line(5, 5, 0, 0);
+
+        assertEquals("Начало (5,5)", new Point(5, 5), points.get(0));
+        assertEquals("Конец (0,0)", new Point(0, 0), points.get(points.size() - 1));
+    }
+
+    @Test
+    public void testLineErrorCalculation() {
+        // Тест на корректный расчёт ошибки (e2 > -dy и e2 < dx)
+        // Линия 3:2 slope
+        List<Point> points = Bresenham.line(0, 0, 6, 4);
+
+        assertEquals("Начало", new Point(0, 0), points.get(0));
+        assertEquals("Конец", new Point(6, 4), points.get(points.size() - 1));
+
+        // Проверяем что все точки последовательны
+        for (int i = 1; i < points.size(); i++) {
+            int dx = Math.abs(points.get(i).x - points.get(i-1).x);
+            int dy = Math.abs(points.get(i).y - points.get(i-1).y);
+            assertTrue("Соседние точки", dx <= 1 && dy <= 1);
+        }
+    }
+
+    @Test
+    public void testCircleLargeRadius() {
+        // Окружность большого радиуса
+        List<Point> points = Bresenham.circle(100, 100, 50);
+
+        assertFalse("Не пустая", points.isEmpty());
+        assertTrue("Верхняя точка", points.contains(new Point(100, 150)));
+        assertTrue("Нижняя точка", points.contains(new Point(100, 50)));
+        assertTrue("Правая точка", points.contains(new Point(150, 100)));
+        assertTrue("Левая точка", points.contains(new Point(50, 100)));
+    }
+
+    @Test
+    public void testCircleDecisionVariable() {
+        // Тест на переменную решения d
+        // При d > 0 происходит шаг по y
+        List<Point> points = Bresenham.circle(0, 0, 10);
+
+        // Проверяем что точки на окружности
+        for (Point p : points) {
+            double distance = Math.sqrt(p.x * p.x + p.y * p.y);
+            assertTrue("Точка на окружности", distance >= 9 && distance <= 11);
+        }
+    }
+
+    @Test
+    public void testCircleNegativeCenter() {
+        // Окружность с отрицательным центром
+        List<Point> points = Bresenham.circle(-50, -50, 10);
+
+        assertTrue("Верхняя точка", points.contains(new Point(-50, -40)));
+        assertTrue("Нижняя точка", points.contains(new Point(-50, -60)));
+    }
+
+    @Test
+    public void testPointEqualityWithNull() {
+        Point p = new Point(5, 10);
+        assertFalse("Point не равен null", p.equals(null));
+        assertFalse("Point не равен строке", p.equals("(5, 10)"));
+    }
+
+    @Test
+    public void testPointHashCodeDistribution() {
+        // Разные точки должны иметь разные hashCode
+        Point p1 = new Point(0, 0);
+        Point p2 = new Point(1, 0);
+        Point p3 = new Point(0, 1);
+        Point p4 = new Point(1, 1);
+
+        java.util.Set<Integer> hashes = new java.util.HashSet<>();
+        hashes.add(p1.hashCode());
+        hashes.add(p2.hashCode());
+        hashes.add(p3.hashCode());
+        hashes.add(p4.hashCode());
+
+        assertEquals("Все hashCode разные", 4, hashes.size());
+    }
+
+    @Test
+    public void testFloodFillSameColor() {
+        // Заливка тем же цветом не должна ничего делать
+        int[][] canvas = new int[5][5];
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                canvas[i][j] = 1;
+            }
+        }
+
+        // Заливаем 1 на 1 - ничего не должно измениться
+        Bresenham.floodFill(canvas, 2, 2, 1, 1);
+
+        // Всё должно остаться 1
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                assertEquals("Цвет не изменился", 1, canvas[i][j]);
+            }
+        }
+    }
+
+    @Test
+    public void testFloodFillWrongTargetColor() {
+        // Заливка с неправильным целевым цветом
+        int[][] canvas = new int[5][5];  // все 0
+
+        // Пытаемся заменить 5 на 1, но 5 нет на холсте
+        Bresenham.floodFill(canvas, 2, 2, 5, 1);
+
+        // Всё должно остаться 0
+        for (int i = 0; i < 5; i++) {
+            for (int j = 0; j < 5; j++) {
+                assertEquals("Цвет не изменился", 0, canvas[i][j]);
+            }
+        }
+    }
+
+    @Test
+    public void testFloodFillCorners() {
+        // Заливка из угла
+        int[][] canvas = new int[5][5];
+
+        Bresenham.floodFill(canvas, 0, 0, 0, 1);
+
+        assertEquals("Угол залит", 1, canvas[0][0]);
+        assertEquals("Центр залит", 1, canvas[2][2]);
+    }
+
+    @Test
+    public void testFloodFillEdgeCases() {
+        // Граничные случаи координат
+        int[][] canvas = new int[3][3];
+
+        // Заливка с края
+        Bresenham.floodFill(canvas, 0, 0, 0, 2);
+        assertEquals("Край залит", 2, canvas[0][0]);
+
+        // Заливка прямо на границе
+        canvas = new int[3][3];
+        Bresenham.floodFill(canvas, 2, 2, 0, 3);
+        assertEquals("Противоположный край залит", 3, canvas[2][2]);
+    }
+
+    @Test
+    public void testLineDxEqualsZero() {
+        // dx = 0 (вертикальная линия)
+        List<Point> points = Bresenham.line(5, 0, 5, 10);
+
+        for (Point p : points) {
+            assertEquals("Все точки имеют x=5", 5, p.x);
+        }
+    }
+
+    @Test
+    public void testLineDyEqualsZero() {
+        // dy = 0 (горизонтальная линия)
+        List<Point> points = Bresenham.line(0, 5, 10, 5);
+
+        for (Point p : points) {
+            assertEquals("Все точки имеют y=5", 5, p.y);
+        }
+    }
+
+    @Test
+    public void testLineDxEqualsDy() {
+        // dx = dy (диагональ 45°)
+        List<Point> points = Bresenham.line(0, 0, 10, 10);
+
+        for (Point p : points) {
+            assertEquals("x = y на диагонали", p.x, p.y);
+        }
+    }
+
+    @Test
+    public void testCircleRadius2() {
+        // Маленькая окружность радиуса 2
+        List<Point> points = Bresenham.circle(0, 0, 2);
+
+        assertTrue("Точка (0, 2)", points.contains(new Point(0, 2)));
+        assertTrue("Точка (2, 0)", points.contains(new Point(2, 0)));
+        assertTrue("Точка (0, -2)", points.contains(new Point(0, -2)));
+        assertTrue("Точка (-2, 0)", points.contains(new Point(-2, 0)));
+    }
+
+    @Test
+    public void testCircleAllOctants() {
+        // Проверка всех 8 октантов окружности
+        List<Point> points = Bresenham.circle(0, 0, 5);
+
+        // Проверяем симметрию - должны быть точки во всех квадрантах
+        boolean hasTopRight = points.stream().anyMatch(p -> p.x > 0 && p.y > 0);
+        boolean hasTopLeft = points.stream().anyMatch(p -> p.x < 0 && p.y > 0);
+        boolean hasBottomLeft = points.stream().anyMatch(p -> p.x < 0 && p.y < 0);
+        boolean hasBottomRight = points.stream().anyMatch(p -> p.x > 0 && p.y < 0);
+
+        assertTrue("Октант 1 (top-right)", hasTopRight);
+        assertTrue("Октант 2 (top-left)", hasTopLeft);
+        assertTrue("Октант 3 (bottom-left)", hasBottomLeft);
+        assertTrue("Октант 4 (bottom-right)", hasBottomRight);
+    }
 }
