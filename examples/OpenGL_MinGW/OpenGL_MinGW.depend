@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1353751060 source:e:\comp_graph\examples\opengl_mingw\main.c
+	<windows.h>
+	<gl/gl.h>
+
+1386259459 source:c:\github\comp_graph\examples\opengl_mingw\main.c
+	<windows.h>
+	<gl/gl.h>
+

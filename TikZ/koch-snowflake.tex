@@ -1,0 +1,26 @@
+% Снежинка Коха
+% Сгенерировано автоматически
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usetikzlibrary{lindenmayersystems}
+\usetikzlibrary{shadings}
+
+% Определение L-системы для кривой Коха
+\pgfdeclarelindenmayersystem{Koch curve}{
+  \rule{F -> F-F++F-F}}
+
+\begin{document}
+\begin{tikzpicture}
+  % Снежинка Коха (три кривых Коха образуют снежинку)
+  \shadedraw[shading=color wheel]
+  [l-system={Koch curve, step=2pt, angle=60, axiom=F++F++F, order=4}]
+  lindenmayer system -- cycle;
+  
+  % Заголовок
+  \node[above, font=\Large\bfseries, text=blue!70!black] at (current bounding box.north)
+    {Снежинка Коха};
+  \node[below, font=\small] at (current bounding box.south)
+    {Порядок рекурсии: 4};
+\end{tikzpicture}
+\end{document}

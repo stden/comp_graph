@@ -1,0 +1,18 @@
+Created by Chris Hegarty.
+
+This project provides a base class and three bridge classes for creating OpenGL applications using C#.  There is an example form and inherited class that demonstrates its use.
+
+This code is free for use in any application.
+
+If you have any comments or questions, you can reach me at avariant@hotmail.com.
+
+==============================>
+
+Additional Notes:
+
+Not every has Visual Studio .NET 2003. So here is the compile options for the C# version of NeHeCS using MCS,
+the free Mono compiler:
+
+mcs -target:winexe -o "bin/debug/NeHeCS.exe" AssemblyInfo.cs BaseGL.cs GLU.cs
+MainForm.cs OpenGL.cs TestGL.cs WGL.cs -r:System.Windows.Forms -r:System.Data 
+-r:System.Drawing
