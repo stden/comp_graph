@@ -1,0 +1,27 @@
+% Треугольник Серпинского
+% Сгенерировано автоматически
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+\usetikzlibrary{lindenmayersystems}
+\usetikzlibrary{shadings}
+
+% Определение L-системы для треугольника Серпинского
+\pgfdeclarelindenmayersystem{Sierpinski triangle}{
+  \rule{F -> G-F-G}
+  \rule{G -> F+G+F}}
+
+\begin{document}
+\begin{tikzpicture}
+  % Треугольник Серпинского с градиентом
+  \shadedraw [top color=white, bottom color=orange!80, draw=orange!80!black]
+  [l-system={Sierpinski triangle, step=2pt, angle=60, axiom=F, order=8}]
+  lindenmayer system -- cycle;
+  
+  % Заголовок
+  \node[above, font=\Large\bfseries, text=orange!50!black] at (current bounding box.north)
+    {Треугольник Серпинского};
+  \node[below, font=\small] at (current bounding box.south)
+    {Порядок рекурсии: 8};
+\end{tikzpicture}
+\end{document}
