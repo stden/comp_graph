@@ -46,3 +46,8 @@ out
 
 AGENTS.md
 output.txt
+
+# Telethon/session files
+*.session
+*.session-journal
+*.session.bak
