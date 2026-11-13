@@ -1,0 +1,278 @@
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+    <title>Примеры решений задач</title>
+    <!-- Синтаксис -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link type="text/css" rel="stylesheet" href="css/sh_nedit.css">
+    <script type="text/javascript" src="js/sh_main.min.js"></script>
+    <script type="text/javascript" src="js/sh_cpp.min.js"></script>
+    <!-- Формулы -->
+    <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}});
+    </script>
+    <script type="text/javascript"
+       src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+    </script>
+</head>
+<body onLoad="sh_highlightDocument()">
+<div id="content">
+    <h1>Примеры решений задач</h1>
+
+<h2>Задача "Вектор"</h2>
+
+<p>Вычислить длину вектора $\overrightarrow{a}=(x,y,z)$</p>
+
+<h3>Решение</h3>
+
+<p>Длина вектора: $|\overrightarrow{a}| = \sqrt{x^2+y^2+z^2}$</p>
+
+<pre class="sh_cpp">
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main(){
+  // Открываем входной и выходной файл
+  freopen("vector.in","r",stdin);
+  freopen("vector.out","w",stdout);
+
+  // Ввод данных
+  double x, y, z;
+  scanf("%lf %lf %lf", &x, &y, &z);
+
+  // Вычисления и вывод ответа
+  printf("%.2lf\n", sqrt(x*x + y*y + z*z));
+
+  return 0;
+}
+    </pre>
+
+<h2>Задача "Прямая по 2-м точкам"</h2>
+
+$a{x_1}+b{y_1}+c=0$ - первая точка<br>
+$a{x_2}+b{y_2}+c=0$ - вторая точка<br>
+
+<p>Решить систему из 2-х линейных уравнений с 3-мя неизвестными => 
+бесконечное количество решений (это одна прямая, и коэффициенты $a, b, c$
+у всех решений пропорциональны друг другу).</p>
+
+<p>$a = \frac{-b{y_1}-c}{x_1}$</p>
+
+<p>$\frac{-b{y_1}-c}{x_1} {x_2}+b{y_2}+c=0$</p>
+
+<p>$-b{y_1}{x_2}-c{x_2}+b{y_2}{x_1}+c{x_1}=0$</p>
+
+<p>$b({y_2}{x_1}-{y_1}{x_2})+c({x_1}-{x_2})=0$</p>
+
+$c = 1$
+
+<p>$b({y_2}{x_1}-{y_1}{x_2})+c({x_1}-{x_2})=0$</p>
+
+<p>$b = \frac{ {x_2}-{x_1} } {{y_2}{x_1}-{y_1}{x_2}}$; $c = 1$; $a = \frac{- c - b{y_1}}{x_1}$</p>
+
+<p>Умножим все уравнения на: ${{y_2}{x_1}-{y_1}{x_2}}$</p>
+
+<p>$b = {x_2}-{x_1}$; $c = {{y_2}{x_1}-{y_1}{x_2}}$; 
+
+$a = \frac{{- c - b{y_1}}}{x_1}{({{y_2}{x_1}-{y_1}{x_2}})}$</p>
+
+
+<p>$a = \frac{{- ({{y_2}{x_1}-{y_1}{x_2}}) - ({x_2}-{x_1}){y_1}}}{x_1}{({{y_2}{x_1}-{y_1}{x_2}})}$</p>
+
+<p>$a = \frac{{- {y_2}{x_1} + {y_1}{x_2} - {x_2}{y_1} + {x_1}{y_1}}} {x_1}{({{y_2}{x_1}-{y_1}{x_2}})}$</p>
+
+<p>$a = ({y_1} - {y_2}) {({{y_2}{x_1}-{y_1}{x_2}})}$</p>
+
+<p>Это частичное решение, оно работает не во всех случаях (надо отдельно разбирать когда 
+${y_2}{x_1}-{y_1}{x_2}=0$
+).</p>
+
+<h3>Другой вариант решения (для всех случаев)</h3>
+
+$a{x_1}+b{y_1}+c=0$ - первая точка<br>
+$a{x_2}+b{y_2}+c=0$ - вторая точка<br>
+
+<p>Приравниваем уравнения или вычитаем из первого уравнения второе.</p>
+
+<p>Получаем уравнение с двумя неизвестными:
+$a({x_1}-{x_2})+b({y_1}-{y_2}) = 0$</p>
+
+<p>Интуиция подсказывает решение:<br>
+$a = {y_1}-{y_2}$<br>
+$b = -({x_1}-{x_2})$<br>
+$({y_1}-{y_2})({x_1}-{x_2})-({x_1}-{x_2})({y_1}-{y_2}) = 0$</p>
+
+$c = -(a{x_1}+b{y_1}) = -a{x_1}-b{y_1} = -({y_1}-{y_2}){x_1}+({x_1}-{x_2}){y_1} =
+-\underline{{y_1}{x_1}}+{y_2}{x_1}+\underline{{x_1}{y_1}}-{x_2}{y_1}={y_2}{x_1}-{x_2}{y_1}$<br>
+
+<pre class="sh_cpp">
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+int main(){
+  // Открываем входной и выходной файл
+  freopen("line.in","r",stdin);
+  freopen("line.out","w",stdout);
+
+  // Ввод данных
+  double x1, y1, x2, y2;
+  scanf("%lf %lf %lf %lf", &x1, &y1, &x2, &y2);
+
+  double a = y1-y2;
+  double b = -(x1-x2);
+  double c = -(a*x1+b*y1);
+
+  // Вычисления и вывод ответа
+  printf("%.2lf %.2lf %.2lf\n", a, b, c);
+  // Проверка ответа
+  printf("%.2lf\n", a*x1 + b*y1 + c);
+  printf("%.2lf\n", a*x2 + b*y2 + c);
+
+  return 0;
+}
+</pre>
+
+<pre class="sh_cpp">
+#include &lt;stdio.h&gt;
+#include &lt;math.h&gt;
+
+const double Inf = 1.e10;
+
+double min(double a, double b){
+  return (a &lt; b) ? a : b;
+}
+
+int main(){
+  // Открываем входной и выходной файл
+  freopen("maxdist.in","r",stdin);
+  freopen("maxdist.out","w",stdout);
+
+  // Ввод данных
+  int N; // Количество вершин 
+  scanf("%d", &N);
+  double X[100], Y[100];
+  for(int i=0; i&lt;N; i++)
+    scanf("%lf %lf", &X[i], &Y[i]);
+
+  double D[100][100];
+
+  for(int i=0; i&lt;N; i++)
+    for(int j=0; j&lt;N; j++)
+      D[i][j] = (i==j) ? 0 : Inf;
+
+  int M; // Количество рёбер
+  scanf("%d", &M);
+  for(int i=0; i&lt;M; i++){
+    int from, to;
+    scanf("%d %d", &from, &to);
+    from--; to--;
+
+    double dist = sqrt(pow(X[from]-X[to],2) + pow(Y[from]-Y[to],2));
+    D[from][to] = dist;
+    D[to][from] = dist;
+  }  
+
+  // Сам алгоритм 
+  for(int k=0; k&lt;N; k++)
+    for(int i=0; i&lt;N; i++)
+      for(int j=0; j&lt;N; j++)
+        D[i][j] = min(D[i][j], D[i][k] + D[k][j]);
+
+  // Выбираем максимум 
+  double max1 = 0.0;
+  for(int i=0; i&lt;N; i++)
+    for(int j=0; j&lt;N; j++){
+      if(D[i][j] &gt; max1) {
+         max1 = D[i][j];
+      }
+    }
+
+  if((max1 &gt; 0) && (max1 &lt; Inf)){
+    printf("%0.6lf\n", max1);
+  } else {
+    printf("-1\n");
+  }
+  
+  return 0;
+}
+</pre>
+
+<h3>Разбор задачи о подобных треугольниках (Пифагор)</h3>
+
+<p>Идея решения: перебирать стороны ища среди них пропорциональные.</p>
+
+<pre class="sh_cpp">
+#include &gt;stdio.h&lt;
+#include &gt;iostream&lt;
+#include &gt;algorithm&lt;
+
+using namespace std;
+
+// Задача о подобии треугольников
+
+// Треугольники подобны, когда их стороны пропорциональны
+// 1 2 3
+// 2 6 4
+// Стороны должны быть упорядочены по возрастанию
+bool similar(int a1, int b1, int c1,
+             int a2, int b2, int c2 ){
+  return (a1*b2 == b1*a2) && (b1*c2 == c1*b2);
+}
+
+int main()
+{
+    freopen("pifagor.in","r",stdin);
+    freopen("pifagor.out","w",stdout);
+
+    // Ввести исходные данные: длины сторон
+    int len[9], u[9];
+    for(int i=0; i<9; i++){
+      cin >> len[i];
+      u[i] = 0;
+    }
+
+    // Упорядочить (отсортировать) стороны по длине
+    sort(len, len + 9);
+
+    // Перебирать стороны и искать подобные треугольники
+    // Когда найдём, выведем на экран
+    for(int i=0; i<9; i++){
+      u[i] = 1;
+      for(int j=i+1; j<9; j++){
+        u[j] = 1;
+        for(int k=j+1; k<9; k++){
+          u[k] = 1;
+          for(int i2=i+1; i2<9; i2++)
+            if(!u[i2]){
+              u[i2] = 1;
+              for(int j2=j+1; j2<9; j2++)
+                if(!u[j2]){
+                    u[j2] = 1;
+                    for(int k2=k+1; k2<9; k2++)
+                      if(!u[k2]){
+                        u[k2] = 1;
+                        if(similar(len[i],len[j],len[k],
+                                   len[i2],len[j2],len[k2])){
+                          cout << len[i] << " " << len[j] << " " << len[k] << endl;
+                          cout << len[i2] << " " << len[j2] << " " << len[k2] << endl;
+                          return 0;
+                        }
+                        u[k2] = 0;
+                      }
+                    u[j2] = 0;
+                }
+              u[i2] = 0;
+            }
+          u[k] = 0;
+        }
+        u[j] = 0;
+      }
+      u[i] = 0;
+    }
+    return 0;
+}
+</pre>
+
+</div>
+</body>
+</html>

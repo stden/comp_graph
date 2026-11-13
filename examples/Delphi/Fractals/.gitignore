@@ -1,0 +1,8 @@
+__history
+*.dcu
+*.exe
+*.dof
+*.dsk
+*.bdsproj
+*.local
+*.identcache

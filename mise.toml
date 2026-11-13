@@ -1,0 +1,36 @@
+[tools]
+java = "temurin-17"
+maven = "3.9.9"
+
+[tasks.check]
+run = "git diff --check"
+
+[tasks."JOGL:JOGL_NeHe:build"]
+run = "mvn verify"
+dir = "JOGL/JOGL_NeHe"
+
+[tasks."JOGL:JOGL_NeHe:test"]
+run = "mvn test"
+dir = "JOGL/JOGL_NeHe"
+
+[tasks."JOGL:NeHe:build"]
+run = "mvn verify"
+dir = "JOGL/NeHe"
+
+[tasks."JOGL:NeHe:test"]
+run = "mvn test"
+dir = "JOGL/NeHe"
+
+[tasks."java:tetrahedron:build"]
+run = "mvn verify"
+dir = "java/tetrahedron"
+
+[tasks."java:tetrahedron:test"]
+run = "mvn test"
+dir = "java/tetrahedron"
+
+[tasks.build]
+run = "mvn verify"
+
+[tasks.test]
+run = "mvn test"

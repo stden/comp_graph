@@ -1,0 +1,2086 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0062)http://exilim.osu.cctpu.edu.ru/diplom/matem/2.11.asp?ThemeID=2 -->
+<HTML><HEAD><TITLE>Двумерные преобразования - 2.11. Перспективные преобразования</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1251">
+<STYLE type=text/css>A.l:link {
+	FONT-SIZE: 8pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.l:hover {
+	FONT-SIZE: 8pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.l:active {
+	FONT-SIZE: 8pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.l:visited {
+	FONT-SIZE: 8pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.std:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #8e5717; TEXT-DECORATION: none
+}
+A.std:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #7f0000; TEXT-DECORATION: none
+}
+A.std:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #8e5717; TEXT-DECORATION: none
+}
+A.std:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 11pt; COLOR: #8e5717; TEXT-DECORATION: none
+}
+A.li:link {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.li:hover {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.li:active {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.li:visited {
+	FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.lil:link {
+	FONT-SIZE: 11pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.lil:hover {
+	FONT-SIZE: 11pt; COLOR: #7f0000; TEXT-DECORATION: none
+}
+A.lil:active {
+	FONT-SIZE: 11pt; COLOR: #666666; TEXT-DECORATION: none
+}
+A.lil:visited {
+	FONT-SIZE: 11pt; COLOR: #666666; TEXT-DECORATION: none
+}
+</STYLE>
+
+<META content="MSHTML 6.00.2800.1106" name=GENERATOR></HEAD>
+<BODY style="FONT-SIZE: 11pt; COLOR: #000000; FONT-FAMILY: Arial" 
+bgColor=#f1efec leftMargin=0 topMargin=0>
+<TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 cellPadding=0 
+width="100%" border=0>
+  <TBODY>
+  <TR>
+    <TD width=1><A 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/index.html"><IMG height=116 
+      alt="" 
+      src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/untitled-1%20copy.jpg" 
+      width=800 border=0></A></TD>
+    <TD width="100%" bgColor=#633207></TD></TR>
+  <TR>
+    <TD colSpan=2>
+      <TABLE 
+      style="BORDER-TOP-WIDTH: 1px; BORDER-LEFT-WIDTH: 1px; FONT-SIZE: 11pt; BORDER-LEFT-COLOR: #8e5717; BORDER-BOTTOM-WIDTH: 1px; BORDER-BOTTOM-COLOR: #8e5717; COLOR: #000000; BORDER-TOP-COLOR: #8e5717; BORDER-RIGHT-WIDTH: 1px; BORDER-RIGHT-COLOR: #8e5717" 
+      cellSpacing=1 cellPadding=0 width="100%" bgColor=#8e5717 border=0>
+        <TBODY>
+        <TR align=middle>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid" 
+          width=145 bgColor=#ff8c00><A class=std 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/algor/index.asp">Алгоритмические<BR>основы</A></TD>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid" 
+          width=135 bgColor=#ff8c00><A class=std 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/matem/index.asp">Математические<BR>основы</A></TD>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid" 
+          width=70 bgColor=#ff8c00><A class=std 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/flash/index.asp">Flash 
+            5</A></TD>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid" 
+          width=100 bgColor=#ff8c00><A class=std 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/corel/index.asp">CorelDraw 
+            10</A></TD>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid" 
+          width=120 bgColor=#ff8c00><A class=std 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/3d/index.asp">3D Studio 
+            Max3</A></TD>
+          <TD 
+          style="BORDER-RIGHT: #8e5717 1px solid; BACKGROUND-POSITION: left 50%; BORDER-TOP: #8e5717 1px solid; BORDER-LEFT: #8e5717 1px solid; BORDER-BOTTOM: #8e5717 1px solid; BACKGROUND-REPEAT: repeat-x" 
+          align=left 
+          background="Двумерные преобразования - 2_11_ Перспективные преобразования.files/dot1.gif" 
+          bgColor=#ff8c00><IMG height=16 alt="" 
+            src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/arrow.gif" 
+            width=21 border=0></TD></TR></TBODY></TABLE></TD></TR>
+  <TR>
+    <TD bgColor=#cccccc colSpan=2><IMG height=1 alt="" 
+      src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/0.gif" 
+      width=10 border=0><A class=li 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/progr/index.asp">[программа]</A> 
+      <A class=li 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/tests/index.asp">[тесты]</A> 
+      <A class=li 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/labs/index.asp">[лабораторные]</A> 
+      <A class=li 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/quest/index.asp">[вопросы]</A> 
+      <A class=li 
+      href="http://exilim.osu.cctpu.edu.ru/diplom/litra/index.asp">[литература]</A><BR><IMG 
+      height=4 alt="" 
+      src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/0.gif" 
+      width=1 border=0></TD></TR>
+  <TR>
+    <TD bgColor=#666666 colSpan=2><IMG height=2 alt="" 
+      src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/0.gif" 
+      width=1 border=0></TD></TR>
+  <TR>
+    <TD colSpan=2>
+      <TABLE style="FONT-SIZE: 11pt; COLOR: #000000; TEXT-ALIGN: justify" 
+      cellSpacing=0 cellPadding=0 width="100%" border=0>
+        <TBODY>
+        <TR>
+          <TD vAlign=top align=right width=140><IMG height=48 alt="" 
+            src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/trian.gif" 
+            width=70 border=0></TD>
+          <TD><BR><BR>
+            <P style="FONT-SIZE: 12pt; COLOR: #666666"><B>2. Пространственные 
+            преобразования и проекции</B></P><BR><B>2.11. Перспективные 
+            преобразования</B>
+            <P>Перспективное преобразование имеет место, когда не равен нулю 
+            любой из первых трех элементов четвертого столбца обобщенной 
+            (4х4)-матрицы преобразования однородных координат. Как было 
+            упомянуто ранее, перспективное преобразование - это преобразование 
+            одного трехмерного пространства в другое. В отличие от обсуждавшихся 
+            ранее параллельных преобразований, в данном случае параллельные 
+            прямые сходятся, размер объекта уменьшается с увеличением расстояния 
+            до центра проекции, и происходит неоднородное искажение линий 
+            объекта, зависящее от ориентации и расстояния от объекта до центра 
+            проекции. Все это помогает нашему восприятию глубины, но не 
+            сохраняет форму объекта.
+            <P><B>Одноточечное перспективное преобразование</B> задается 
+            равенством
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x&nbsp; y&nbsp; z&nbsp; 1]&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>1 &nbsp; 0 &nbsp; 0 &nbsp; 
+                  0<BR>0 &nbsp; 1 &nbsp; 0 &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 1 
+                  &nbsp; r<BR>0 &nbsp; 0 &nbsp; 0 &nbsp; 1</TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;= [x&nbsp; y&nbsp; z&nbsp; rz+1]</TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Здесь h = rz + 1 &lt;&gt; 1. Обычные координаты получаются 
+            делением на h:
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x*&nbsp; y*&nbsp; z*&nbsp; 1] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>x<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>rz+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>y<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>rz+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>z<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>rz+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>1</TD>
+                <TD vAlign=center align=right><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Перспективное проецирование на некоторую двумерную видовую 
+            плоскость можно получить, объединив ортографическую проекцию с 
+            перспективным преобразованием. Например, перспективное проецирование 
+            на плоскость z = 0 выполняется с помощью преобразований
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD></TR>
+              <TR>
+                <TD>[T] = [P<SUB>r</SUB>][P<SUB>z</SUB>] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>1 &nbsp; 0 &nbsp; 0 &nbsp; 
+                  0<BR>0 &nbsp; 1 &nbsp; 0 &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 1 
+                  &nbsp; r<BR>0 &nbsp; 0 &nbsp; 0 &nbsp; 1</TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>1 &nbsp; 0 &nbsp; 0 &nbsp; 
+                  0<BR>0 &nbsp; 1 &nbsp; 0 &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 0 
+                  &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 0 &nbsp; 1</TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>1 &nbsp; 0 &nbsp; 0 &nbsp; 
+                  0<BR>0 &nbsp; 1 &nbsp; 0 &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 0 
+                  &nbsp; r<BR>0 &nbsp; 0 &nbsp; 0 &nbsp; 1</TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD></TR></TBODY></TABLE>
+            <P>и
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x&nbsp; y&nbsp; z&nbsp; 1]&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>1 &nbsp; 0 &nbsp; 0 &nbsp; 
+                  0<BR>0 &nbsp; 1 &nbsp; 0 &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 0 
+                  &nbsp; r<BR>0 &nbsp; 0 &nbsp; 0 &nbsp; 1</TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;= [x&nbsp; y&nbsp; 0&nbsp; rz+1]</TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Обычные координаты равны
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x*&nbsp; y*&nbsp; z*&nbsp; 1] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>x<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>rz+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>y<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>rz+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>0</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>1</TD>
+                <TD vAlign=center align=right><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Чтобы лучше понять действие перспективного преобразования, 
+            рассмотрим рис. 2.6. На нем показано перспективное проецирование на 
+            плоскость z = 0 резка AB, параллельного оси z, в отрезок А*В* на 
+            плоскости z = 0 с центром проекции, расположенным в точке -1/z на 
+            оси z. Преобразование можно разделить на два этапа. На первом этапе 
+            отрезок АВ отображается в отрезок A'B'. Затем с помощью 
+            ортографического проецирования отрезок A'B' в трехмерном 
+            пространстве отображается в отрезок А*В* на плоскости z = 0. Центр 
+            проекции расположен в бесконечности.
+            <P>
+            <DIV align=center><IMG height=538 alt="" 
+            src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/2.6.gif" 
+            width=328 border=0></DIV>
+            <P>Исследование рис. 2.6 показывает, что прямые А'В' и АВ пересекают 
+            плоскость z = 0 в одной и той же точке. Прямая А'В' также пересекает 
+            ось z в точке z = 1/r. Далее, перспективное преобразование 
+            отображает расположенную в бесконечности точку пересечения 
+            параллельных прямых АВ и оси z в конечную точку z = 1/r на оси z. 
+            Эта точка называется точкой схода (см. раздел 2.13). Заметим, что 
+            точка схода лежит на том же расстоянии от плоскости проекции, что и 
+            центр проекции только с противоположной стороны от плоскости, 
+            например, если z = 0 есть плоскость проекции, а центр проекции 
+            находится в z = -1/r, тогда точка схода находится в z = 1/r.
+            <P>Прежде чем перейти к примерам, для полноты изложения укажем 
+            одноточечные перспективные преобразования с центром проекции и 
+            точкой схода, расположенными на осях х и y. Одноточечное 
+            перспективное преобразование
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x&nbsp; y&nbsp; z&nbsp; 1]&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>1 &nbsp; 0 &nbsp; 0 &nbsp; 
+                  p<BR>0 &nbsp; 1 &nbsp; 0 &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 1 
+                  &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 0 &nbsp; 1</TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;= [x&nbsp; y&nbsp; z&nbsp; px+1]</TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>с обычными координатами
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x*&nbsp; y*&nbsp; z*&nbsp; 1] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>x<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>px+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>y<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>px+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>z<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>px+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>1</TD>
+                <TD vAlign=center align=right><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>имеет центр проекции [-1/р&nbsp; 0&nbsp; 0&nbsp; 1] и точку 
+            схода, расположенную на оси x в [1/p&nbsp; 0&nbsp; 0&nbsp; 1].
+            <P>Одноточечное перспективное преобразование
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x&nbsp; y&nbsp; z&nbsp; 1]&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>1 &nbsp; 0 &nbsp; 0 &nbsp; 
+                  0<BR>0 &nbsp; 1 &nbsp; 0 &nbsp; q<BR>0 &nbsp; 0 &nbsp; 1 
+                  &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 0 &nbsp; 1</TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;= [x&nbsp; y&nbsp; z&nbsp; qy+1]</TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>с обычными координатами
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x*&nbsp; y*&nbsp; z*&nbsp; 1] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>x<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>qy+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>y<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>qy+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>z<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=30 border=0><BR>qy+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>1</TD>
+                <TD vAlign=center align=right><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>имеет центр проекции [0&nbsp; -1/q&nbsp; 0&nbsp; 1] и точку 
+            схода, расположенную на оси y в [0&nbsp; 1/q&nbsp; 0&nbsp; 1]. 
+            <P><B>Пример 2.4. Одноточечное перспективное преобразование 
+            куба.</B><BR>Выполним перспективное проецирование на плоскость z = 0 
+            единичного куба, изображенного на рис. 2.7,а, с центром проекции в 
+            точке z<SUB>с</SUB> = 10 на оси z.
+            <P>
+            <DIV align=center><IMG height=227 alt="" 
+            src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/2.7.gif" 
+            width=395 border=0></DIV>
+            <P>Одноточечный перспективный множитель r равен
+            <P>
+            <DIV align=center>r = -1/z<SUB>с</SUB>= -1/10 =-0,1</DIV>
+            <P>Получаем, что
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[T] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>1<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>-0,1<BR>1</TD></TR></TBODY></TABLE>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR>
+              <TR>
+                <TD vAlign=center>[X*] = [X][T] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;</TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD></TR>
+                    <TR align=middle ?>
+                      <TD vAlign=center align=left><IMG height=72 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=1 border=0></TD>
+                      <TD>1<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>-0,1<BR>1</TD>
+                      <TD vAlign=center align=right><IMG height=72 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=1 border=0></TD></TR>
+                    <TR>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD></TR></TBODY></TABLE></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0,9<BR>0,9<BR>0,9<BR>0,9<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>1,11<BR>1,11<BR>0<BR>0<BR>1<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1,11<BR>1,11<BR>0<BR>0<BR>1<BR>1</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Результат изображен на рис. 2.7,b. Отметим, что, поскольку центр 
+            проекции находится на положительной оси z, проекция передней грани 
+            АВСD куба больше проекции задней грани.
+            <P>Рис. 2.7,b не передает трехмерности куба. Как показано в 
+            следующем примере, более удовлетворительный результат можно получить 
+            центрированием куба.
+            <P><B>Пример 2.5. Одноточечное перспективное преобразование 
+            центрированного куба.</B><BR>Изображенный на рис, 2.7,а куб может 
+            быть центрирован на оси z путем его переноса на -1/2 вдоль 
+            направлений х и y. Результирующее преобразование
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR>
+              <TR>
+                <TD vAlign=center>[T] = [T<SUB>rxy</SUB>][P<SUB>rz</SUB>] 
+                =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>1<BR>0<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>1<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>-0,1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>1<BR>0<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>-0,1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Преобразованные обычные координаты равны
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR>
+              <TR>
+                <TD vAlign=center>[X*] = [X][T] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;</TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD></TR>
+                    <TR align=middle ?>
+                      <TD vAlign=center align=left><IMG height=72 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=1 border=0></TD>
+                      <TD>1<BR>0<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>-0,1<BR>1</TD>
+                      <TD vAlign=center align=right><IMG height=72 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=1 border=0></TD></TR>
+                    <TR>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD></TR></TBODY></TABLE></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>-0,5<BR>0,5<BR>0,5<BR>-0,5<BR>-0,5<BR>0,5<BR>0,5<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>-0,5<BR>-0,5<BR>0,5<BR>0,5<BR>-0,5<BR>-0,5<BR>0,5<BR>0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0,9<BR>0,9<BR>0,9<BR>0,9<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>-0,56<BR>0,56<BR>0,56<BR>-0,56<BR>-0,5<BR>0,5<BR>0,5<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>-0,56<BR>-0,56<BR>0,56<BR>0,56<BR>-0,5<BR>-0,5<BR>0,5<BR>0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Результат изображен на рис. 2.8. Заметим, что ранее параллельные 
+            оси z прямые, соединяющие углы передней и задней граней, теперь 
+            сходятся к оси z (x = 0, y = 0).
+            <P>
+            <DIV align=center><IMG height=289 alt="" 
+            src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/2.8.gif" 
+            width=293 border=0></DIV>
+            <P>К сожалению, результирующее изображение все еще не дает 
+            адекватного восприятия трехмерной формы объекта. Поэтому мы 
+            обратимся к более сложным перспективным преобразованиям.
+            <P>Если в четвертом столбце (4х4)-матрицы преобразования два 
+            элемента из первых трех не равны нулю, то такое преобразование 
+            называется <B>двуточечным перспективным преобразованием</B>. 
+            Двуточечное перспективное преобразование
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x&nbsp; y&nbsp; z&nbsp; 1]&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>1 &nbsp; 0 &nbsp; 0 &nbsp; 
+                  p<BR>0 &nbsp; 1 &nbsp; 0 &nbsp; q<BR>0 &nbsp; 0 &nbsp; 1 
+                  &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 0 &nbsp; 1</TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;= [x&nbsp; y&nbsp; z&nbsp; px+qy+1]</TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>с обычными координатами
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x*&nbsp; y*&nbsp; z*&nbsp; 1] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>x<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=50 border=0><BR>px+qy+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>y<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=50 border=0><BR>px+qy+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>z<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=50 border=0><BR>px+qy+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>1</TD>
+                <TD vAlign=center align=right><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>имеет два центра проекции: первый на оси х в точке [-1/р&nbsp; 
+            0&nbsp; 0&nbsp; 1] и второй на оси y в точке [0&nbsp; -1/q&nbsp; 
+            0&nbsp; 1], и две точки схода: на оси х в точке [1/р&nbsp; 0&nbsp; 
+            0&nbsp; 1] и на оси y в точке [0&nbsp; 1/q&nbsp; 0&nbsp; 1]. 
+            Заметим, что двуточечное преобразование можно получить объединением 
+            двух одноточечных. Конкретнее,
+            <P>
+            <DIV align=center>[Р<SUB>рq</SUB>] = [Р<SUB>р</SUB>] [Р<SUB>q</SUB>] 
+            = [Р<SUB>q</SUB>] [Р<SUB>р</SUB>]</DIV>
+            <P>Более подробно двуточечная перспективная проекция рассмотрена в 
+            следующем примере.
+            <P><B>Пример 2.6. Двуточечные перспективные 
+            преобразование.</B><BR>Снова, рассмотрим единичный куб, описанный в 
+            примере 2.4. Построим двуточечную перспективную проекцию этого куба 
+            на плоскость z = 0 для центров проекции, находящихся в точках х = 
+            -10 и y = -10. А именно,
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[T] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>1 &nbsp; 0 &nbsp; 0 &nbsp; 
+                  p<BR>0 &nbsp; 1 &nbsp; 0 &nbsp; q<BR>0 &nbsp; 0 &nbsp; 1 
+                  &nbsp; 0<BR>0 &nbsp; 0 &nbsp; 0 &nbsp; 1</TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Здесь p и q равны
+            <P>
+            <DIV align=center>р = -1/(-10) = 0,1, &nbsp; &nbsp; q = -1/(-10) = 
+            0,1</DIV>
+            <P>Преобразованные координаты куба имеют вид:
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR>
+              <TR>
+                <TD vAlign=center>[X*] = [X][T]&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;</TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD></TR>
+                    <TR align=middle ?>
+                      <TD vAlign=center align=left><IMG height=72 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=1 border=0></TD>
+                      <TD>1<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0,1<BR>0,1<BR>0<BR>1</TD>
+                      <TD vAlign=center align=right><IMG height=72 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=1 border=0></TD></TR>
+                    <TR>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD></TR></TBODY></TABLE></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1,1<BR>1,2<BR>1,1<BR>1<BR>1,1<BR>1,2<BR>1,1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>0,909<BR>0,833<BR>0<BR>0<BR>0,909<BR>0,833<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0,833<BR>0,909<BR>0<BR>0<BR>0,833<BR>0,909</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Результаты изображены на рис. 2.9,a. Две точки схода находятся в 
+            x = 10 и y = 10.
+            <P>
+            <DIV align=center><IMG height=261 alt="" 
+            src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/2.9.gif" 
+            width=480 border=0></DIV>
+            <P>Центрирование куба на оси z с помощью переноса вдоль х и y на 
+            -0.5, аналогичное проделанному в примере 2.5, приведет к следующей 
+            общей матрице преобразования
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR>
+              <TR>
+                <TD vAlign=center>[T] = [T<SUB>xy</SUB>][P<SUB>pqz</SUB>] 
+                =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>1<BR>0<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>1<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0,1<BR>0,1<BR>0<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>1<BR>0<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0,1<BR>0,1<BR>0<BR>0,9</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>где предполагается проецирование на плоскость z = 0. Заметим, что 
+            в этом случае общий масштабирущий множитель не равен единице, т.е. 
+            происходит очевидное масштабирование куба, вызванное его 
+            перемещением. Преобразованные координаты равны
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR>
+              <TR>
+                <TD vAlign=center>[X*] = [X][T] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;</TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD></TR>
+                    <TR align=middle ?>
+                      <TD vAlign=center align=left><IMG height=72 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=1 border=0></TD>
+                      <TD>1<BR>0<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0,1<BR>0,1<BR>0<BR>0,9</TD>
+                      <TD vAlign=center align=right><IMG height=72 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=1 border=0></TD></TR>
+                    <TR>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD></TR></TBODY></TABLE></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>-0,5<BR>0,5<BR>0,5<BR>-0,5<BR>-0,5<BR>0,5<BR>0,5<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>-0,5<BR>-0,5<BR>0,5<BR>0,5<BR>-0,5<BR>-0,5<BR>0,5<BR>0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0,9<BR>1<BR>1,1<BR>1<BR>0,9<BR>1<BR>1,1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>-0,56<BR>0,5<BR>0,46<BR>-0,5<BR>-0,56<BR>0,5<BR>0,46<BR>-0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>-0,56<BR>-0,5<BR>0,46<BR>0,5<BR>-0,56<BR>-0,5<BR>0,46<BR>0,5</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Результаты изображены на рис. 2.9,b.
+            <P>И снова снова полученное изображение не дает адекватного 
+            восприятия трехмерной формы объекта. Поэтому обратимся к 
+            <B>трехточечным перспективным преобразованиям</B>.
+            <P>Трехточечная перспектива получается, если не равны нулю три 
+            первых элемента четвертого столбца (4х4)-матрицы преобразования. Это 
+            трехточечное перспективное преобразование
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x&nbsp; y&nbsp; z&nbsp; 1]&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>1 &nbsp; 0 &nbsp; 0 &nbsp; 
+                  p<BR>0 &nbsp; 1 &nbsp; 0 &nbsp; q<BR>0 &nbsp; 0 &nbsp; 1 
+                  &nbsp; r<BR>0 &nbsp; 0 &nbsp; 0 &nbsp; 1</TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;= [x&nbsp; y&nbsp; z&nbsp; px+qy+rz+1]</TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>с обычными координатами
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+              <TR>
+                <TD vAlign=center>[x*&nbsp; y*&nbsp; z*&nbsp; 1] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>x<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=75 border=0><BR>px+qy+rz+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>y<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=75 border=0><BR>px+qy+rz+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>z<BR><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=75 border=0><BR>px+qy+rz+1</TD>
+                <TD>&nbsp; &nbsp;</TD>
+                <TD vAlign=center align=middle>1</TD>
+                <TD vAlign=center align=right><IMG height=36 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>имеет три центра проекции: на оси х в точке [-1/р&nbsp; 0 &nbsp; 
+            0&nbsp; 1], на оси y в [0&nbsp; -1/q&nbsp; 0&nbsp; 1] и на оси z в 
+            [0&nbsp; 0 &nbsp; -1/r&nbsp; 1], а также три точки схода: на оси х в 
+            [1/р&nbsp; 0 &nbsp; 0&nbsp; 1], на оси y в [0&nbsp; 1/q&nbsp; 
+            0&nbsp; 1] и на оси z в [0&nbsp; 0 &nbsp; 1/r&nbsp; 1].
+            <P>Снова заметим, что трехточечное перспективное преобразование, 
+            может быть получено конкатенацией трех одноточечных перспективных 
+            преобразований, по одному на каждую координатную ось. Создание 
+            трехточечной перспективы иллюстрируется на следующем примере.
+            <P><B>Пример 2.7. Трехточечное перспективное 
+            преобразование.</B><BR>Для описанного в примере 2.4 куба рассмотрим 
+            проекцию на плость z = 0 после применения трехточечного 
+            перспективного преобразования. Центры проекции находятся в точках х 
+            = -10, y = -10 и z = 10. Точки схода находятся в х = 10, y = 10 и z 
+            = -10. Матрица преобразования равна
+            <P>
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR>
+              <TR>
+                <TD vAlign=center>[T] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>1<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0,1<BR>0,1<BR>-0,1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=72 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Преобразованные координаты куба 
+            <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+            cellPadding=0 align=center border=0>
+              <TBODY>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR>
+              <TR>
+                <TD vAlign=center>[X*] = [X][T] =&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;</TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD></TR>
+                    <TR align=middle ?>
+                      <TD vAlign=center align=left><IMG height=72 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=1 border=0></TD>
+                      <TD>1<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>1<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0,1<BR>0,1<BR>-0,1<BR>1</TD>
+                      <TD vAlign=center align=right><IMG height=72 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=1 border=0></TD></TR>
+                    <TR>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD></TD>
+                      <TD><IMG height=1 alt="" 
+                        src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                        width=3 border=0></TD></TR></TBODY></TABLE></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>1<BR>1<BR>0<BR>0<BR>1<BR>1</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0,9<BR>1<BR>1,1<BR>1<BR>1<BR>1,1<BR>1,2<BR>1,1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD>&nbsp;=&nbsp;</TD>
+                <TD vAlign=center align=left><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD>
+                <TD vAlign=center align=middle>
+                  <TABLE style="FONT-SIZE: 11pt; COLOR: #000000" cellSpacing=0 
+                  cellPadding=0 align=center border=0>
+                    <TBODY>
+                    <TR align=middle>
+                      <TD>0<BR>1<BR>0,909<BR>0<BR>0<BR>0,909<BR>0,833<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0,909<BR>1<BR>0<BR>0<BR>0,833<BR>0,909</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0<BR>0</TD>
+                      <TD>&nbsp; &nbsp;</TD>
+                      <TD>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1<BR>1</TD></TR></TBODY></TABLE></TD>
+                <TD vAlign=center align=right><IMG height=140 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=1 border=0></TD></TR>
+              <TR>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD>
+                <TD></TD>
+                <TD><IMG height=1 alt="" 
+                  src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/1.gif" 
+                  width=3 border=0></TD></TR></TBODY></TABLE>
+            <P>Результат показан на рис. 2.10.
+            <P>
+            <DIV align=center><IMG height=280 alt="" 
+            src="Двумерные преобразования - 2_11_ Перспективные преобразования.files/2.10.gif" 
+            width=298 border=0></DIV>
+            <P>
+            <DIV align=center><A class=lil 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/matem/2.10.asp?ThemeID=2">назад</A> 
+            | <A class=lil 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/matem/index.asp">содержание</A> 
+            | <A class=lil 
+            href="http://exilim.osu.cctpu.edu.ru/diplom/matem/2.12.asp?ThemeID=2">вперед</A></DIV></TD>
+          <TD width=30></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD></TD></TR>
+        <TR>
+          <TD></TD>
+          <TD align=right>
+            <HR color=#cccccc>
+            <A class=l href="mailto:aqua@mail.ru">© ОСУ АВТФ</A>
+            <P></P></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE></BODY></HTML>
