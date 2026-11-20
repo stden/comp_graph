@@ -11,6 +11,12 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    env:
+      # Maven Central may answer HTTP 429 to cold dependency downloads from shared runners; retry those responses.
+      MAVEN_OPTS: >-
+        -Daether.connector.http.retryHandler.count=5
+        -Daether.connector.http.retryHandler.serviceUnavailable=429,503
+
     steps:
     - uses: actions/checkout@v7
 
